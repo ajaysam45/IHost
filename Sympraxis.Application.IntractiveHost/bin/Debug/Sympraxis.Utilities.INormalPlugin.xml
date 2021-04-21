@@ -1,0 +1,35 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+Sympraxis.Utilities.INormalPlugin
+</name>
+</assembly>
+<members>
+<member name="P:Sympraxis.Utilities.INormalPlugin.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:Sympraxis.Utilities.INormalPlugin.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:Sympraxis.Utilities.INormalPlugin.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member><member name="T:Sympraxis.Utilities.INormalPlugin.IWorkflowClient">
+	<summary>
+ '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+                                  MODIFICATIONS
+ Label    Date        Author                   Description
+ '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+ GAA001   2019-07-30  Glenn Amurgis            Added Properties
+                                               Fixed Signature
+ '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+ </summary>
+	<remarks></remarks>
+</member>
+</members>
+</doc>

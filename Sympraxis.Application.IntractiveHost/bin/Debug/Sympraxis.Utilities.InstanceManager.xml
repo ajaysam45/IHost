@@ -1,0 +1,30 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+Sympraxis.Utilities.InstanceManager
+</name>
+</assembly>
+<members>
+<member name="P:Sympraxis.Utilities.InstanceManager.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:Sympraxis.Utilities.InstanceManager.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:Sympraxis.Utilities.InstanceManager.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member><member name="M:Sympraxis.Utilities.InstanceManager.InstanceManager.GetApplicationCount">
+	<summary>
+ To get the Application that are currently running through ProcessId.
+ </summary>
+	<returns> Applications count that are currently running in workdesk opened machine. </returns>
+	<remarks></remarks>
+</member>
+</members>
+</doc>

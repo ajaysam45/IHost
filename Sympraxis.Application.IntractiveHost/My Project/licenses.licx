@@ -1,0 +1,15 @@
+Atalasoft.Imaging.AtalaImage, Atalasoft.dotImage
+Atalasoft.Imaging.Dpi, Atalasoft.dotImage
+Atalasoft.PdfDoc.Geometry.PdfBounds, Atalasoft.PDFDoc
+Atalasoft.PdfDoc.Geometry.PdfPoint, Atalasoft.PDFDoc
+Atalasoft.Utils.Geometry.QuadrilateralF, Atalasoft.dotImage.Lib
+Atalasoft.Imaging.WinControls.WorkspaceViewer, Atalasoft.dotImage.WinControls
+Atalasoft.dotImage.PdfDoc.Bridge.AtalaImageCompressor, Atalasoft.dotImage.PdfDoc.Bridge
+Atalasoft.Imaging.Codec.Pdf.PdfDecoder, Atalasoft.dotImage.PdfReader
+Atalasoft.PdfDoc.Generating.PdfGeneratedDocument, Atalasoft.PdfDoc
+Atalasoft.Barcoding.Writing.DataMatrixBarcodeWriter, Atalasoft.dotImage.Barcoding.Writing
+Atalasoft.Barcoding.Writing.Pdf417BarcodeWriter, Atalasoft.dotImage.Barcoding.Writing
+Atalasoft.Barcoding.Reading.BarCodeReader, Atalasoft.dotImage.Barcoding.Reading
+Atalasoft.Barcoding.Writing.BarcodeWriter, Atalasoft.dotImage.Barcoding.Writing
+TXTextControl.TextControl, TXTextControl.Windows.Forms, Version=27.0.2000.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638
+TXTextControl.TextControl, TXTextControl.Windows.Forms, Version=27.0.1200.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638

@@ -1,0 +1,24 @@
+﻿<Window x:Class="FrmMessage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Information"  Loaded="Window_Loaded" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" ResizeMode = "NoResize" Height="auto"  Width="auto">
+    
+    <Grid >
+        <Grid.RowDefinitions >
+            <RowDefinition Height="70*"  ></RowDefinition>
+            <RowDefinition  Height="30*"   ></RowDefinition>
+            
+        </Grid.RowDefinitions>
+       
+        <TextBlock    Name="txtMessage" FontSize="12"   Grid.Row="0"  Height="auto" TextWrapping="Wrap" MinHeight="50"  Margin="5,2,5,2"/>
+        <StackPanel  Grid.Row="1" Orientation="Horizontal" Width="Auto" Height="40" Background="#e8e8ec" FlowDirection="RightToLeft">
+            <Button Content="Cancel" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Right" Name="BtnCancel"  Click="BtnCancel_Click"  Width="70" Height="27"  >
+               
+            </Button>
+            <Button Content="Notify" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Right" Name="BtnNotify" Click="BtnNotify_Click"   Width="70" Height="27"  />
+            <Button Content="Readonly" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Right"  Name="BtnReadonly" Click="BtnReadonly_Click"   Width="70" Height="27" FlowDirection="RightToLeft" />
+        </StackPanel>
+                
+    </Grid>
+     
+</Window>

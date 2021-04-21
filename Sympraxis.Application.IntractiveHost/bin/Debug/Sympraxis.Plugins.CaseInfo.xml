@@ -1,0 +1,111 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+Sympraxis.Plugins.CaseInfo
+</name>
+</assembly>
+<members>
+<member name="M:Sympraxis.Plugins.CaseInfo.CaseInfoControl.InitializeComponent">
+	<summary>
+InitializeComponent
+</summary>
+</member><member name="T:Sympraxis.Plugins.CaseInfo.CaseInfoControl">
+	<summary>
+CaseInfoControl
+</summary>
+</member><member name="M:Sympraxis.Plugins.CaseInfo.Validation.InitializeFormTools(System.String)">
+	<summary>
+ Initialize the FormTool
+ </summary>
+	<param name="configurationFile">FormTool Config FilePath "Ex:\\inch-dev11\Installbase_Sympraxis52\Formsbase\files\AttributesClass.xml"</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:Sympraxis.Plugins.CaseInfo.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:Sympraxis.Plugins.CaseInfo.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="P:Sympraxis.Plugins.CaseInfo.My.Resources.Resources.search">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+</summary>
+</member><member name="P:Sympraxis.Plugins.CaseInfo.My.Resources.Resources.switchview_circle">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+</summary>
+</member><member name="T:Sympraxis.Plugins.CaseInfo.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member><member name="M:Sympraxis.Plugins.CaseInfo.CaseInfoControl.MoveNext(System.Object)">
+	<summary>
+  Set focus to next question 
+ </summary>
+	<remarks></remarks>
+</member><member name="M:Sympraxis.Plugins.CaseInfo.CaseInfoControl.MovePrev(System.Object)">
+	<summary>
+ Set focus to previous Question
+ </summary>
+	<remarks></remarks>
+</member><member name="M:Sympraxis.Plugins.CaseInfo.CaseInfoControl.FindNextFocusableChild(System.Object,System.Windows.UIElement)">
+	<summary>
+ Used to find the next focusable child from the given control
+ </summary>
+	<param name="o"></param>
+	<param name="CurChild"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Sympraxis.Plugins.CaseInfo.CaseInfoControl.FindVisualChildByType``1(System.Object)">
+	<summary>
+ This function is used to find the first visual child in focused list view content
+ </summary>
+	<typeparam name="T"></typeparam>
+	<param name="o"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Sympraxis.Plugins.CaseInfo.CaseInfoControl.FindLastVisualChildByType``1(System.Object)">
+	<summary>
+ This function is used to find the last visual child in the focused list view content
+ </summary>
+	<typeparam name="T"></typeparam>
+	<param name="o"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Sympraxis.Plugins.CaseInfo.CaseInfoControl.LoadXaml(System.String)">
+	<summary>
+ ' Load the Xaml for Given path using only for Banner ApplicationFramework
+ </summary>
+	<param name="Path"></param>
+	<remarks></remarks>
+</member><member name="M:Sympraxis.Plugins.CaseInfo.VisualTreeHelpers.FindAncestor``1(System.Windows.DependencyObject)">
+	<summary>
+ Returns the first ancester of specified type
+ </summary>
+</member><member name="M:Sympraxis.Plugins.CaseInfo.VisualTreeHelpers.FindAncestor``1(System.Windows.DependencyObject,``0)">
+	<summary>
+ Returns a specific ancester of an object
+ </summary>
+</member><member name="M:Sympraxis.Plugins.CaseInfo.VisualTreeHelpers.FindAncestor``1(System.Windows.DependencyObject,System.String)">
+	<summary>
+ Finds an ancestor object by name and type
+ </summary>
+</member><member name="M:Sympraxis.Plugins.CaseInfo.VisualTreeHelpers.FindParent``1(System.Windows.DependencyObject)">
+	<summary>
+ Looks for a child control within a parent by name
+ </summary>
+</member><member name="M:Sympraxis.Plugins.CaseInfo.VisualTreeHelpers.FindChild``1(System.Windows.DependencyObject,System.String)">
+	<summary>
+ Looks for a child control within a parent by name
+ </summary>
+</member><member name="M:Sympraxis.Plugins.CaseInfo.VisualTreeHelpers.FindChild``1(System.Windows.DependencyObject)">
+	<summary>
+ Looks for a child control within a parent by type
+ </summary>
+</member>
+</members>
+</doc>

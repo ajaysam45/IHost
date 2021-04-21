@@ -1,0 +1,65 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+Sympraxis.Utilities.LayoutManager
+</name>
+</assembly>
+<members>
+<member name="M:Sympraxis.Utilities.LayoutManager.LayoutManager.InitializeComponent">
+	<summary>
+InitializeComponent
+</summary>
+</member><member name="T:Sympraxis.Utilities.LayoutManager.LayoutManager">
+	<summary>
+LayoutManager
+</summary>
+</member><member name="M:Sympraxis.Utilities.LayoutManager.LayoutManager.HiddenTitles(System.String,System.Boolean@)">
+	<summary>
+ ' This Function is used to Hide the Title Based Upon LayoutSetting
+ </summary>
+	<param name="Title"></param>
+	<param name="HiddenTitleFlag"></param>
+	<remarks></remarks>
+</member><member name="M:Sympraxis.Utilities.LayoutManager.LayoutManager.SETWD">
+	<summary>
+ ' Automatically go to Workdesk,system Monitor,Work Monitor
+ </summary>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:Sympraxis.Utilities.LayoutManager.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:Sympraxis.Utilities.LayoutManager.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="P:Sympraxis.Utilities.LayoutManager.My.Resources.Resources.clock">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:Sympraxis.Utilities.LayoutManager.My.Resources.Resources.idle">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:Sympraxis.Utilities.LayoutManager.My.Resources.Resources.savewp">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:Sympraxis.Utilities.LayoutManager.My.Resources.Resources.totalwp">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:Sympraxis.Utilities.LayoutManager.My.Resources.Resources.work">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="T:Sympraxis.Utilities.LayoutManager.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+</members>
+</doc>

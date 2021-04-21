@@ -1,0 +1,317 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+Sympraxis.Common
+</name>
+</assembly>
+<members>
+<member name="T:Sympraxis.Common.ExceptionManager.MessageTypes">
+	<summary>
+ List of Types of Messages
+ </summary>
+	<remarks></remarks>
+</member><member name="P:Sympraxis.Common.ExceptionManager.HandledExceptionMessage.ErrorCode">
+	<summary>
+ ErrorCode of the Exception captured
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:Sympraxis.Common.ExceptionManager.HandledExceptionMessage.Message">
+	<summary>
+ Message of the exception thrown.
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:Sympraxis.Common.ExceptionManager.HandledExceptionMessage.String">
+	<summary>
+ Message of the exception thrown.
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:Sympraxis.Common.ExceptionManager.HandledExceptionMessage.InnerExceptionMessage">
+	<summary>
+ Message of the innermost exception in the exception thrown
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:Sympraxis.Common.ExceptionManager.HandledExceptionMessage.Stack">
+	<summary>
+ Stack trace between the exception thrown and the innermost exception.
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="E:Sympraxis.Common.ExceptionManager.HandledException">
+	<summary>
+ Event raised by exception handler to the application and other base modules to indicate an unhandled exception.
+ </summary>
+	<param name="hem">Drilled down detail of exception that has occured.</param>
+	<remarks></remarks>
+</member><member name="T:Sympraxis.Common.ExceptionManager.ExceptionHandle">
+	<summary>
+ The windows base classes must hookup this method to DispatcherUnhandledException event. 
+ <code>
+ Dim em as ExceptionManager
+ AddHandler Application.ThreadException, AddressOf em.OnThreadException
+ </code>
+		<para></para>
+	</summary>
+	<param name="hem"></param>
+	<param name="messageType">ThreadExceptionEventArgs</param>
+	<remarks></remarks>
+</member><member name="M:Sympraxis.Common.ExceptionManager.OnWindowsException(System.Object,System.UnhandledExceptionEventArgs)">
+	<summary>
+ The windows base classes must hookup this method to DispatcherUnhandledException event. 
+ <code>
+ Dim em as ExceptionManager
+ AddHandler AppDomain.CurrentDomain.UnhandledException, AddressOf em.OnWindowsException
+ </code>
+		<para></para>
+	</summary>
+	<param name="sender"></param>
+	<param name="threadException">UnhandledExceptionEventArgs</param>
+	<remarks></remarks>
+</member><member name="M:Sympraxis.Common.ExceptionManager.ProcessException(System.String@,Sympraxis.Common.ExceptionManager.MessageTypes)">
+	<summary>
+ Main Function which returns the custom error message based on the corresponding exceptions.
+ </summary>
+	<param name="expectedResult">Exception string</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Sympraxis.Common.ExceptionManager.ProcessException(System.String@,System.Int32,Sympraxis.Common.ExceptionManager.MessageTypes)">
+	<summary>
+ '
+ </summary>
+	<param name="expectedResult">User Exception String</param>
+	<param name="FormIndex">FormIndex of the Exception form</param>
+	<param name="messageType">Exception Object</param>
+	<returns></returns>
+	<remarks>This is Written to update the errormessage in a specified form</remarks>
+</member><member name="M:Sympraxis.Common.ExceptionManager.ProcessException(System.Exception,System.String@,Sympraxis.Common.ExceptionManager.MessageTypes)">
+	<summary>
+ Main Function which returns the custom error message based on the corresponding exceptions.
+ </summary>
+	<param name="expectedResult">User Exception string</param>
+	<param name="exception">Exception Object</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Sympraxis.Common.ExceptionManager.ProcessEXception(System.Type,System.Exception,System.String,Sympraxis.Common.ExceptionManager.MessageTypes)">
+	<summary>
+ Main Function which returns the custom error message based on the corresponding exceptions.
+ </summary>
+	<param name="exceptionType">User Exception Typer</param>
+	<param name="exception">The Error occured Object</param>
+	<param name="CustomExceptionMessage">The User defined message</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Sympraxis.Common.ObjectQualifyingAdapter.CreateXMLMap(System.String)">
+	<summary>
+ Serialize base form docuement into xml file 
+ </summary>
+	<param name="sFileName"></param>
+	<remarks></remarks>
+</member><member name="M:Sympraxis.Common.ObjectQualifyingAdapter.CreateXMLMap">
+	<summary>
+	</summary>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Sympraxis.Common.ObjectQualifyingAdapter.LoadXmlDocument(System.String)">
+	<summary>
+ Load xmlDocument and refine xml
+ </summary>
+	<param name="sFileName"></param>
+	<remarks></remarks>
+</member><member name="M:Sympraxis.Common.ObjectQualifyingAdapter.LoadXmlDocument(System.IO.Stream)">
+	<summary>
+	</summary>
+	<param name="stream"></param>
+	<remarks></remarks>
+</member><member name="M:Sympraxis.Common.ObjectQualifyingAdapter.UpdateObject">
+	<summary>
+ Deserialize Updated XMl Document Into Passing Form Document argument
+ </summary>
+	<remarks>Finally fd has been updated</remarks>
+</member><member name="M:Sympraxis.Common.ObjectQualifyingAdapter.RefineInnerXml(System.Xml.XmlNode@)">
+	<summary>
+ Find '&lt;' and '&gt;'  char replace with 'less than' and 'greater than' respectively in the node
+ </summary>
+	<param name="xn"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Sympraxis.Common.ObjectQualifyingAdapter.UnRefineInnerXml(System.Xml.XmlNode@)">
+	<summary>
+ Find 'less than' and 'greater than'  char replace with &lt; and &gt; respectively in the node
+ </summary>
+	<param name="xn"></param>
+	<remarks></remarks>
+</member><member name="M:Sympraxis.Common.ObjectQualifyingAdapter.IsMatch(Sympraxis.Common.ObjectFieldMap)">
+	<summary>
+	</summary>
+	<param name="field"> To Match One Field </param>
+	<returns>Boolean</returns>
+	<remarks></remarks>
+</member><member name="M:Sympraxis.Common.ObjectQualifyingAdapter.IsMatch(System.Collections.Generic.List{Sympraxis.Common.ObjectFieldMap})">
+	<summary>
+	</summary>
+	<param name="fxFields">To Match more than One Fileds </param>
+	<returns>Boolean</returns>
+	<remarks></remarks>
+Remove the Checking for Field maps count =0 as there is no condition then that will be the default map. Changed on Jun-11-2012 while checking the routing script
+
+</member><member name="M:Sympraxis.Common.ObjectQualifyingAdapter.GetFieldValue(Sympraxis.Common.ObjectFieldMap@)">
+	<summary>
+ Get value for given fld map xpath and update value into fldmap.value object
+ </summary>
+	<param name="field">Config Structure</param>
+	<returns>Integer</returns>
+	<remarks></remarks>
+</member><member name="M:Sympraxis.Common.ObjectQualifyingAdapter.UpdateFieldsColl(System.Collections.Generic.List{Sympraxis.Common.ObjectFieldMap})">
+	<summary>
+ Added the UpdateFieldsColl function for  Multiple 
+ </summary>
+	<param name="fieldREMapList"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:Sympraxis.Common.UniqueIdSegment.Type">
+	<summary>
+  ReadOnly Property for Setting SegmentType
+ </summary>
+	<value>ReadOnly Property Setting SegmentType</value>
+	<returns>UIdSegmentType</returns>
+	<remarks></remarks>
+</member><member name="M:Sympraxis.Common.UniqueIdSegmentKeyNumberHelper.GenerateSysKeys(System.Int32,Sympraxis.Common.ObjectQualifyingAdapter,Sympraxis.Common.UniqueIdSettings,System.String,System.Int32@,System.String@)">
+	<summary>
+	</summary>
+	<param name="iTotDpCount"></param>
+	<param name="DocFldAD"></param>
+	<param name="KeySettings"></param>
+	<param name="ObjectType"></param>
+	<remarks></remarks>
+</member><member name="M:Sympraxis.Common.UniqueIdSegmentKeyNumberHelper.GenerateSysKeys(System.Int32,Sympraxis.Common.ObjectQualifyingAdapter,Sympraxis.Common.UniqueIdSettings,System.String,Sympraxis.Common.UniqueIdSegmentRangeKeyNumber,System.Int32@,System.String@)">
+	<summary>
+ Created By: SA1060
+ Date      : 23 Aug 2010
+ Overloaded Function
+ </summary>
+	<param name="totalDPCount"></param>
+	<param name="objFieldAD"></param>
+	<param name="KeySettings"></param>
+	<param name="ObjectType"></param>
+	<remarks></remarks>
+</member><member name="M:Sympraxis.Common.clsSystemKeyClass.GetSysRecs(Sympraxis.Common.clsSystemKeyClass.SysConsignBatch@,System.Collections.Hashtable@)">
+	<summary>
+ Created By : SA1060
+ Date       : 23 Aug 2010
+ Description: This function will execute the procedure dbo.
+ </summary>
+	<param name="pSysConsignBatch"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Sympraxis.Common.clsSystemKeyClass.GetBatchDate(Sympraxis.Common.clsSystemKeyClass.SysBatch,System.Collections.Hashtable@)">
+	<summary>
+ Created by US1547
+ To get the Batch Zip Creation dates which was in dtSiteReceiveDate column in ScanBatch Table of QOSDB
+ </summary>
+	<param name="pSysBatch"></param>
+	<param name="dtBatches"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Sympraxis.Common.UniqueIdSegmentDate.#ctor(System.DateTime,Sympraxis.Common.UniqueIdDateFormat,System.Char,System.Char,System.Char,System.Char,System.String,System.String,System.String)">
+	<summary>
+ Constructs date segment for the given settings
+ </summary>
+	<param name="DateFormat">Format of date supported</param>
+	<param name="PadYear">Left padding character for single digit year. Leave empty if padding not required.</param>
+	<param name="PadDay">Left padding character for single digit day of the year. Leave empty if padding not required.</param>
+	<param name="PadDate">Left padding character for single digit date. Leave empty if padding not required.</param>
+	<param name="PadMonth">Left padding character for single digit month. Leave empty if padding not required.</param>
+	<param name="DateMap">Comma separated values to be replaced for the date. Give value for 31 dates.</param>
+	<param name="MonthMap">Comma separated values to be replaced for the month. Give value for 12 months in the order of month in year</param>
+	<param name="YearMap">Comma separated paired values to be replaced for each year. Eg. 2008|A,2009|B,2010|C</param>
+	<remarks></remarks>
+</member><member name="M:Sympraxis.Common.XObjectBase.Save(System.String)">
+	<summary>
+ Serializes the class object to an Xml file.
+ </summary>
+	<param name="fileName">Name of the file to be saved.</param>
+	<remarks>The file is first created in local temp file and then copied to the given location.</remarks>
+</member><member name="T:Sympraxis.Common.XObjectBase">
+	<summary>
+ The base class for all serializable classes in my project.
+ </summary>
+	<remarks>This is my core document class.</remarks>
+</member><member name="M:Sympraxis.Common.ConfigurationManager.#ctor(System.String)">
+	<summary>
+ Constructs ProfileLoader with the given profile name
+ </summary>
+	<param name="stringProfileName">Fully qualified name of the profile.</param>
+	<remarks>To load the Profile thro XInclude</remarks>
+</member><member name="M:Sympraxis.Common.ConfigurationManager.GetErrMsg">
+	<summary>
+	</summary>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Sympraxis.Common.ConfigurationManager.GetConfig(System.String,System.Type)">
+	<summary>
+ Gets the configuration settings for the given app key.
+ </summary>
+	<param name="appKey">Name of the xml node that contains the configuration settings for the process.</param>
+	<param name="type">Serializable type of the configuration settings.</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Sympraxis.Common.ConfigurationManager.GetControlConfig(System.String,System.Type)">
+	<summary>
+ Gets the configuration settings for the given app key.
+ </summary>
+	<param name="appKey">Name of the xml node that contains the configuration settings for the process.</param>
+	<param name="type">Serializable type of the configuration settings.</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Sympraxis.Common.ConfigurationManager.GetConfig(System.String,System.Type,System.Object@)">
+	<summary>
+	</summary>
+	<param name="appKey"></param>
+	<param name="type"></param>
+	<param name="docBase"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Sympraxis.Common.ConfigurationManager.GetQuestIDConfig(System.String,System.Type)">
+	<summary>
+ ''bp582353, 7002-QuestionId Is Blank, 7003-Data Type is blank 
+ ''7330, Duplicate Configuration
+ </summary>
+	<param name="appKey"></param>
+	<param name="type"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="T:Sympraxis.Common.ConfigurationManager">
+	<summary>
+ This class will load the workflow configuration file and provide configuration settings to the applications. Uses XIncludingReader to combine the configurations distributed across files and then use XObjectBase to deserialize them to process specific configuration settings.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:Sympraxis.Common.UniqueIdSettings.UpdateXPathName(System.Collections.ArrayList)">
+	<summary>
+ This function is used to update xPathName from xPath
+ </summary>
+	<remarks></remarks>
+</member><member name="P:Sympraxis.Common.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:Sympraxis.Common.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:Sympraxis.Common.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+</members>
+</doc>

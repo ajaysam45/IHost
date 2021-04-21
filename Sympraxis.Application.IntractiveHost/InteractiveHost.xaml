@@ -1,0 +1,794 @@
+﻿<RibbonWindow x:Class="InteractiveHost"
+    xmlns:LayoutManager="clr-namespace:Sympraxis.Utilities.LayoutManager;assembly=Sympraxis.Utilities.LayoutManager"  
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+     xmlns:avalonDock="http://schemas.xceed.com/wpf/xaml/avalondock"
+    xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+                        xmlns:RibbonWin="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Ribbon"
+     
+    Title="" FontFamily="Quicksand"   TextBlock.TextAlignment="Justify"  MouseMove="Window_MouseMove" KeyDown="RibbonWindow_KeyDown"  StateChanged = "RibbonWindow_StateChanged"   Deactivated="RibbonWindow_Deactivated"    Activated="RibbonWindow_Activated"    Loaded="RibbonWindow_Loaded"  SizeChanged="Window_SizeChanged"    Closing="RibbonWindow_Closing"   >
+  
+    <Grid Name="grdMain"  Margin="6,0,6,0"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  >
+        <Grid.Resources>
+            <FontFamily x:Key="Quicksand">pack://application:,,,/Resources/#Quicksand</FontFamily>
+            <Style x:Key="ClearButtonStyle" TargetType="{x:Type Button}">
+                <Setter Property="BorderBrush" Value="Transparent"/>
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border x:Name="border" 
+						CornerRadius="2" 
+						Background="{TemplateBinding Background}" 
+						BorderThickness="1" 
+						BorderBrush="{TemplateBinding BorderBrush}" 
+						Width="15" Height="16" 
+						SnapsToDevicePixels="True">
+                                <Grid Width="8" Height="8" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <Path x:Name="path1" Stroke="#ADADAD" Data="M0,0 L8,8" StrokeThickness="2" />
+                                    <Path x:Name="path2" Stroke="#ADADAD" Data="M8,0 L0,8" StrokeThickness="2" />
+                                </Grid>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="BorderBrush" Value="#ADADAD"/>
+                                    <Setter Property="Background" Value="WhiteSmoke"/>
+                                    <Setter Property="Stroke" TargetName="path1" Value="DarkRed"/>
+                                    <Setter Property="Stroke" TargetName="path2" Value="DarkRed"/>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="#FFADADAD" Offset="0"/>
+                                                <GradientStop Color="White" Offset="0.5"/>
+                                                <GradientStop Color="White" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style x:Key="MinButtonStyle" TargetType="{x:Type Button}">
+                <Setter Property="BorderBrush" Value="Transparent"/>
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border x:Name="border" 
+						CornerRadius="2" 
+						Background="{TemplateBinding Background}" 
+						BorderThickness="1" 
+						BorderBrush="{TemplateBinding BorderBrush}" 
+						Width="15" Height="16" 
+						SnapsToDevicePixels="True">
+                                <Grid Width="8" Height="8" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <Path x:Name="path1" Stroke="#ADADAD" Data="M0,8 L8,8" StrokeThickness="2" />
+                                </Grid>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="BorderBrush" Value="#ADADAD"/>
+                                    <Setter Property="Background" Value="WhiteSmoke"/>
+                                    <Setter Property="Stroke" TargetName="path1" Value="Blue"/>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="#FFADADAD" Offset="0"/>
+                                                <GradientStop Color="White" Offset="0.5"/>
+                                                <GradientStop Color="White" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style x:Key="ButtonStyle"  TargetType="{x:Type Button}">
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="SnapsToDevicePixels" Value="True" />
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border CornerRadius="4" Background="{TemplateBinding Background}">
+                                <Grid>
+                                    <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" />
+                                </Grid>
+                            </Border>
+
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#E59400" />
+                                    <Setter Property="Foreground" Value="Black" />
+                                </Trigger>
+
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter Property="Background" Value="OrangeRed" />
+                                    <Setter Property="Foreground" Value="Black" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <DropShadowEffect x:Key="MyEffect" ShadowDepth="0" Color="LightBlue" Opacity="1" BlurRadius="10"/>
+            <Style x:Key="ButtonStyleNoHighlighting" TargetType="Button">
+                <Style.Triggers>
+                    <Trigger Property="Button.IsMouseOver" Value="True">
+                        <Setter Property="Button.Effect" Value="{StaticResource MyEffect}" />
+                    </Trigger>
+                </Style.Triggers>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Grid Background="{TemplateBinding Background}">
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="CommonStates">
+                                        <VisualState x:Name="Normal"/>
+                                        <VisualState x:Name="MouseOver"/>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </Grid.Resources>
+
+        <Grid.RowDefinitions >
+            <RowDefinition Height="Auto"  ></RowDefinition>
+            <RowDefinition  Height="Auto"   ></RowDefinition>
+            <RowDefinition Height="Auto"   ></RowDefinition>
+            <RowDefinition  Height="Auto"   ></RowDefinition>
+            <RowDefinition  Height="Auto"   ></RowDefinition>
+            <RowDefinition    ></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions >
+            <ColumnDefinition   ></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Popup Name="pnlIndicator" Placement="Top" MaxHeight="22"   AllowsTransparency="True"  MaxWidth="92" IsOpen="False">
+            <Grid Name="grdIndicator" Height="22"  Width="92"  >
+                <Border BorderBrush="Transparent" BorderThickness="1" >
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Name="CIWidth" Width="30" />
+                            <ColumnDefinition Name="SIWidth" Width="30" />
+                            <ColumnDefinition Name="DIWidth" Width="32" />
+                        </Grid.ColumnDefinitions>
+                        <!--<Grid  Grid.Row="0" Margin="5">
+                            <TextBlock Name="SIHeader" FontSize="14" FontFamily="Consolas" FontWeight="Bold" VerticalAlignment="Center" >Work Instruction</TextBlock>
+                        </Grid>-->
+                        <Grid Grid.Column="0">
+                            <Border Name="CIBorder">
+                                <Button Name="CIndicate" Content="CI" ToolTip="Context: " Width="29" VerticalAlignment="Top" HorizontalAlignment="Left"  HorizontalContentAlignment="Center" Style="{StaticResource ButtonStyle}" Height="20" Click="CIndicate_Click"  ></Button>
+                            </Border>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <Border Name="SIBorder">
+                                <Button Name="SIndicate" Content="SI" ToolTip="Standard: " Width="29" VerticalAlignment="Top" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Style="{StaticResource ButtonStyle}" Height="20" Click="SIndicate_Click"></Button>
+                            </Border>
+                        </Grid>
+                        <Grid Grid.Column="2">
+                            <Border Name="DIBorder">
+                                <Button Name="DIndicate" Content="DI" ToolTip="Dynamic: " Width="29" VerticalAlignment="Top" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Style="{StaticResource ButtonStyle}" Height="20" Click="DIndicate_Click" ></Button>
+                            </Border>
+                        </Grid>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Popup>
+
+        <Popup Name="pnlDynamicInstruction"  Placement="Top" MaxHeight="170" MaxWidth="360" AllowsTransparency="True"    IsOpen="False">
+            <Grid Name="grdDI">
+                <Border Name="DIStyle" BorderBrush="Transparent" BorderThickness="1" Background="#FFF5EB80" MouseEnter="DIStyle_MouseEnter"   MouseLeave="DIStyle_MouseLeave" LostKeyboardFocus="DIStyle_LostKeyboardFocus" GotKeyboardFocus="DIStyle_GotKeyboardFocus">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20" />
+                            <RowDefinition Height="150"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="300" />
+                            <ColumnDefinition Width="60" />
+                        </Grid.ColumnDefinitions>
+                        <!--<Grid  Grid.Row="0"  Grid.Column="0" Margin="5">
+                            <TextBlock Name="DIHeader" FontSize="14" FontFamily="Consolas" FontWeight="Bold" VerticalAlignment="Center" >Work Instruction</TextBlock>
+                        </Grid>-->
+                        <Grid  Grid.Row="0" Grid.Column="1">
+                            <Border>
+                                <Grid Margin="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="20"/>
+                                        <ColumnDefinition Width="20"/>
+                                        <ColumnDefinition Width="20"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Grid.Column="1" Opacity="0.7" Margin="2">
+                                        <Button Name="pinDI" Click="pinDI_Click"  Width="15" Height="15" ToolTip="Pin"  IsTabStop="False" Style="{StaticResource ButtonStyleNoHighlighting}" BorderBrush="Transparent" 
+                                    Visibility="Collapsed">
+                                            <Button.Background>
+                                                <ImageBrush ImageSource="Resources/pin.png"/>
+                                            </Button.Background>
+                                        </Button>
+                                        <Button Name="unpinDI" Click="pinDI_Click"  Width="15" Height="15" ToolTip="UnPin"  IsTabStop="False" Style="{StaticResource ButtonStyleNoHighlighting}" BorderBrush="Transparent" 
+                                    Visibility="Collapsed">
+                                            <Button.Background>
+                                                <ImageBrush ImageSource="Resources/unpin.png"/>
+                                            </Button.Background>
+                                        </Button>
+                                    </StackPanel>
+                                    <Button x:Name="btnDIMinimize" IsTabStop="False" Grid.Column="0" Margin="0,0,4,0" Style="{StaticResource MinButtonStyle}" Click="btnDIMinimize_Click" 
+                                    Visibility="Collapsed"/>
+                                    <Button x:Name="btnDIClose" IsTabStop="False" Click="btnDIClose_Click"  Grid.Column="2" Margin="0,0,4,0" Style="{StaticResource ClearButtonStyle}" 
+                                    Visibility="Visible"/>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                        <Grid  Grid.Row="1" Grid.ColumnSpan="2"  Margin="5">
+                            <DataGrid Grid.Column="0" Grid.Row="0" x:Name="DIDataGrid" Visibility="Visible" CanUserAddRows="False" AllowDrop="False" 
+                            AutoGenerateColumns="False" KeyboardNavigation.DirectionalNavigation="Cycle"
+                            ItemsSource="{Binding Path= INS,UpdateSourceTrigger=PropertyChanged}"
+                            GridLinesVisibility="None" BorderThickness="0,0,0,0" Background="{Binding Path=BColor}"
+                            IsTabStop="False"  Focusable="True" HeadersVisibility="None"
+                            RowDetailsVisibilityMode="Visible"   >
+                                <DataGrid.RowStyle>
+                                    <Style TargetType="DataGridRow">
+                                        <Setter Property="FontSize" Value="{Binding Path=FSize}"/>
+                                        <Setter Property="FontFamily"  Value="Quicksand"/>
+                                        <Setter Property="Foreground" Value="{Binding Path=Fcolor}"/>
+                                        <Setter Property="IsTabStop" Value="False"/>
+                                        <Setter Property="Focusable" Value="False"/>
+                                        <Setter Property="Background" Value="{Binding Path=BColor}"/>
+                                    </Style>
+                                </DataGrid.RowStyle>
+                                <DataGrid.Columns>
+                                    <DataGridTemplateColumn Header="">
+                                        <DataGridTemplateColumn.CellStyle>
+                                            <Style TargetType="{x:Type DataGridCell}">
+                                                <Style.Triggers>
+                                                    <Trigger Property="IsSelected" Value="True">
+                                                        <Setter Property="Background" Value="Transparent"/>
+                                                        <Setter Property="BorderBrush" Value="Transparent"/>
+                                                        <Setter Property="Foreground" Value="{Binding Path=Fcolor}"/>
+                                                        <Setter Property="FontWeight" Value="Bold"/>
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </DataGridTemplateColumn.CellStyle>
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <StackPanel>
+                                                    <TextBlock Text="{Binding Path=LN}" Width="320"  TextWrapping="Wrap" />
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Popup>
+        <Popup Name="pnlStadInstruction" Placement="Top" MaxHeight="170"  MaxWidth="360" AllowsTransparency="True"  IsOpen="False">
+            <Grid Name="grdSI">
+                <Border Name="SIStyle" BorderBrush="Transparent" BorderThickness="1" Background="#FFF5EB80" MouseEnter="SIStyle_MouseEnter"   MouseLeave="SIStyle_MouseLeave" LostKeyboardFocus="SIStyle_LostKeyboardFocus" GotKeyboardFocus="SIStyle_GotKeyboardFocus">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20" />
+                            <RowDefinition Height="150"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="300" />
+                            <ColumnDefinition Width="60" />
+                        </Grid.ColumnDefinitions>
+                        <!--<Grid  Grid.Row="0" Margin="5">
+                            <TextBlock Name="SIHeader" FontSize="14" FontFamily="Consolas" FontWeight="Bold" VerticalAlignment="Center" >Work Instruction</TextBlock>
+                        </Grid>-->
+                        <Grid  Grid.Row="0" Grid.Column="1">
+                            <Border>
+                                <Grid Margin="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="20"/>
+                                        <ColumnDefinition Width="20"/>
+                                        <ColumnDefinition Width="20"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Grid.Column="1" Opacity="0.7" Margin="2">
+                                        <Button Name="pinSI" Click="pinSI_Click"  Width="15" Height="15" ToolTip="Pin"  IsTabStop="False" Style="{StaticResource ButtonStyleNoHighlighting}" BorderBrush="Transparent" 
+                                    Visibility="Collapsed">
+                                            <Button.Background>
+                                                <ImageBrush ImageSource="Resources/pin.png"/>
+                                            </Button.Background>
+                                        </Button>
+                                        <Button Name="unpinSI" Click="pinSI_Click" Width="15" Height="15" ToolTip="UnPin"  IsTabStop="False" Style="{StaticResource ButtonStyleNoHighlighting}" BorderBrush="Transparent" 
+                                    Visibility="Collapsed">
+                                            <Button.Background>
+                                                <ImageBrush ImageSource="Resources/unpin.png"/>
+                                            </Button.Background>
+                                        </Button>
+                                    </StackPanel>
+                                    <Button x:Name="btnSIMinimize" IsTabStop="False" Grid.Column="0" Margin="0,0,4,0" Style="{StaticResource MinButtonStyle}" Click="btnSIMinimize_Click" 
+                                    Visibility="Collapsed"/>
+                                    <Button x:Name="btnSIClose" IsTabStop="False" Click="btnSIClose_Click"  Grid.Column="2" Margin="0,0,4,0" Style="{StaticResource ClearButtonStyle}" 
+                                    Visibility="Visible"/>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                        <Grid  Grid.Row="1" Grid.ColumnSpan="2"  Margin="5">
+                            <DataGrid Grid.Column="0" Grid.Row="0" x:Name="SIDataGrid" Visibility="Visible" CanUserAddRows="False" AllowDrop="False" 
+                            AutoGenerateColumns="False" KeyboardNavigation.DirectionalNavigation="Cycle"
+                            ItemsSource="{Binding Path= INS,UpdateSourceTrigger=PropertyChanged}"
+                            GridLinesVisibility="None" BorderThickness="0,0,0,0" Background="{Binding Path=BColor}"
+                            IsTabStop="False"  Focusable="True" HeadersVisibility="None"
+                            RowDetailsVisibilityMode="Visible"   >
+                                <DataGrid.RowStyle>
+                                    <Style TargetType="DataGridRow">
+                                        <Setter Property="FontSize" Value="{Binding Path=FSize}"/>
+                                        <Setter Property="FontFamily"  Value="Quicksand"/>
+                                        <Setter Property="Foreground" Value="{Binding Path=Fcolor}"/>
+                                        <Setter Property="IsTabStop" Value="False"/>
+                                        <Setter Property="Focusable" Value="False"/>
+                                        <Setter Property="Background" Value="{Binding Path=BColor}"/>
+                                    </Style>
+                                </DataGrid.RowStyle>
+                                <DataGrid.Columns>
+                                    <DataGridTemplateColumn Header="">
+                                        <DataGridTemplateColumn.CellStyle>
+                                            <Style TargetType="{x:Type DataGridCell}">
+                                                <Style.Triggers>
+                                                    <Trigger Property="IsSelected" Value="True">
+                                                        <Setter Property="Background" Value="Transparent"/>
+                                                        <Setter Property="BorderBrush" Value="Transparent"/>
+                                                        <Setter Property="Foreground" Value="{Binding Path=Fcolor}"/>
+                                                        <Setter Property="FontWeight" Value="Bold"/>
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </DataGridTemplateColumn.CellStyle>
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <StackPanel>
+                                                    <TextBlock Text="{Binding Path=LN}" Width="320"  TextWrapping="Wrap" />
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Popup>
+
+        <Popup Name="pnlContextInstruction"  Placement="Top" MaxHeight="170" MaxWidth="360" AllowsTransparency="True"  IsOpen="False">
+            <Grid Name="grdCI">
+                <Border Name="CIStyle" BorderBrush="Transparent" BorderThickness="1" Background="#FFF5EB80" MouseEnter="CIStyle_MouseEnter"   MouseLeave="CIStyle_MouseLeave" LostKeyboardFocus="CIStyle_LostKeyboardFocus" GotKeyboardFocus="CIStyle_GotKeyboardFocus">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20" />
+                            <RowDefinition Height="150"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="300" />
+                            <ColumnDefinition Width="60" />
+                        </Grid.ColumnDefinitions>
+                        <!--<Grid  Grid.Row="0"  Grid.Column="0" Margin="5">
+                            <TextBlock Name="DIHeader" FontSize="14" FontFamily="Consolas" FontWeight="Bold" VerticalAlignment="Center" >Work Instruction</TextBlock>
+                        </Grid>-->
+                        <Grid  Grid.Row="0" Grid.Column="1">
+                            <Border>
+                                <Grid Margin="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="20"/>
+                                        <ColumnDefinition Width="20"/>
+                                        <ColumnDefinition Width="20"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Grid.Column="1" Opacity="0.7" Margin="2">
+                                        <Button Name="pinCI" Click="pinCI_Click" Width="15" Height="15" ToolTip="Pin"  IsTabStop="False" Style="{StaticResource ButtonStyleNoHighlighting}" BorderBrush="Transparent" 
+                                    Visibility="Collapsed">
+                                            <Button.Background>
+                                                <ImageBrush ImageSource="Resources/pin.png"/>
+                                            </Button.Background>
+                                        </Button>
+                                        <Button Name="unpinCI" Click="pinCI_Click" Width="15" Height="15" ToolTip="UnPin"   IsTabStop="False" Style="{StaticResource ButtonStyleNoHighlighting}" BorderBrush="Transparent" 
+                                    Visibility="Collapsed">
+                                            <Button.Background>
+                                                <ImageBrush ImageSource="Resources/unpin.png"/>
+                                            </Button.Background>
+                                        </Button>
+                                    </StackPanel>
+                                    <Button x:Name="btnCIMinimize" IsTabStop="False" Grid.Column="0" Margin="0,0,4,0" Style="{StaticResource MinButtonStyle}" Click="btnCIMinimize_Click" 
+                                    Visibility="Collapsed"/>
+                                    <Button x:Name="btnCIClose" IsTabStop="False" Click="btnCIClose_Click"  Grid.Column="2" Margin="0,0,4,0" Style="{StaticResource ClearButtonStyle}" 
+                                    Visibility="Visible"/>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                        <Grid  Grid.Row="1" Grid.ColumnSpan="2"  Margin="5">
+                            <DataGrid Grid.Column="0" Grid.Row="0" x:Name="CIDataGrid" Visibility="Visible" CanUserAddRows="False" AllowDrop="False" 
+                            AutoGenerateColumns="False" KeyboardNavigation.DirectionalNavigation="Cycle"
+                            ItemsSource="{Binding Path= INS,UpdateSourceTrigger=PropertyChanged}"
+                            GridLinesVisibility="None" BorderThickness="0,0,0,0" Background="{Binding Path=BColor}"
+                            IsTabStop="False"  Focusable="True" HeadersVisibility="None"
+                            RowDetailsVisibilityMode="Visible"   >
+                                <DataGrid.RowStyle>
+                                    <Style TargetType="DataGridRow">
+                                        <Setter Property="FontSize" Value="{Binding Path=FSize}"/>
+                                        <Setter Property="FontFamily"  Value="Quicksand"/>
+                                        <Setter Property="Foreground" Value="{Binding Path=Fcolor}"/>
+                                        <Setter Property="IsTabStop" Value="False"/>
+                                        <Setter Property="Focusable" Value="False"/>
+                                        <Setter Property="Background" Value="{Binding Path=BColor}"/>
+                                    </Style>
+                                </DataGrid.RowStyle>
+                                <DataGrid.Columns>
+                                    <DataGridTemplateColumn Header="">
+                                        <DataGridTemplateColumn.CellStyle>
+                                            <Style TargetType="{x:Type DataGridCell}">
+                                                <Style.Triggers>
+                                                    <Trigger Property="IsSelected" Value="True">
+                                                        <Setter Property="Background" Value="Transparent"/>
+                                                        <Setter Property="BorderBrush" Value="Transparent"/>
+                                                        <Setter Property="Foreground" Value="{Binding Path=Fcolor}"/>
+                                                        <Setter Property="FontWeight" Value="Bold"/>
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </DataGridTemplateColumn.CellStyle>
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <StackPanel>
+                                                    <TextBlock Text="{Binding Path=LN}" Width="320"  TextWrapping="Wrap" />
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Popup>
+
+
+        <Popup Name="pnlCompleteObjectCount"  Placement="Center"   MaxHeight="170" MaxWidth="300" AllowsTransparency="True"  IsOpen="False">
+            <Grid Name="grdobjCount">
+                <Border Name="CIobjCount" BorderBrush="Transparent" BorderThickness="1" Background="#FFF5EB80" Margin="0,0,0,0"     >
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20" />
+                            <RowDefinition Height="150"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="250" />
+                            <ColumnDefinition Width="40" />
+                        </Grid.ColumnDefinitions>
+                        <!--<Grid  Grid.Row="0"  Grid.Column="0" Margin="5">
+                            <TextBlock Name="DIHeader" FontSize="14" FontFamily="Consolas" FontWeight="Bold" VerticalAlignment="Center" >Work Instruction</TextBlock>
+                        </Grid>-->
+                        <Grid  Grid.Row="0" HorizontalAlignment="Right"  Grid.Column="1">
+                            <Border>
+                                <Grid Margin="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="20"/>
+
+                                    </Grid.ColumnDefinitions>
+
+
+                                    <Button x:Name="btnObjClose" HorizontalContentAlignment  ="Right"  IsTabStop="False" Click="btnObjClose_Click"  Grid.Column="0" Margin="0,0,4,0" Style="{StaticResource ClearButtonStyle}" 
+                                    Visibility="Visible"/>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                        <Grid  Grid.Row="1" Grid.ColumnSpan="2"  Margin="5">
+                            <DataGrid IsReadOnly="True"  Name="DGObjCount"
+              AutoGenerateColumns="False" HorizontalAlignment="Left"  CanUserReorderColumns="False" HeadersVisibility="Column"  Width="280">
+                                <DataGrid.RowStyle>
+                                    <Style TargetType="DataGridRow">
+                                        <Setter Property="FontSize" Value="{Binding Path=FSize}"/>
+                                        <Setter Property="FontFamily"  Value="Quicksand"/>
+                                        <Setter Property="Foreground" Value="{Binding Path=Fcolor}"/>
+                                        <Setter Property="IsTabStop" Value="False"/>
+                                        <Setter Property="Focusable" Value="False"/>
+                                        <Setter Property="Background" Value="{Binding Path=BColor}"/>
+                                    </Style>
+                                </DataGrid.RowStyle>
+                                <DataGrid.Columns>
+                                    <DataGridTemplateColumn Header="">
+                                        <DataGridTemplateColumn.CellStyle>
+                                            <Style TargetType="{x:Type DataGridCell}">
+                                                <Style.Triggers>
+                                                    <Trigger Property="IsSelected" Value="True">
+                                                        <Setter Property="Background" Value="Transparent"/>
+                                                        <Setter Property="BorderBrush" Value="Transparent"/>
+                                                        <Setter Property="Foreground" Value="{Binding Path=Fcolor}"/>
+                                                        <Setter Property="FontWeight" Value="Bold"/>
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </DataGridTemplateColumn.CellStyle>
+
+                                    </DataGridTemplateColumn>
+                                    <DataGridTextColumn Header="ProcessName" Width="170" Binding="{Binding ProcessName}" />
+                                    <DataGridTextColumn Header="Completed" Width="*" Binding="{Binding Completed}" />
+                                </DataGrid.Columns>
+
+                            </DataGrid>
+                        </Grid>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Popup>
+
+
+
+        <Ribbon     Grid.Row="0" Grid.Column="0"  x:Name="RibbonWin"  SelectedIndex="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
+            <Ribbon.ApplicationMenu>
+                <RibbonApplicationMenu Visibility="Collapsed" />
+            </Ribbon.ApplicationMenu>
+
+            <Ribbon.QuickAccessToolBar  >
+                <RibbonQuickAccessToolBar Visibility="Collapsed" >
+                </RibbonQuickAccessToolBar>
+            </Ribbon.QuickAccessToolBar>
+            <Ribbon.HelpPaneContent >
+                <WrapPanel>
+                    <Grid Width="Auto" Height="auto" Name="btnOpenNext" Visibility="Collapsed">
+                        <Grid.ColumnDefinitions >
+                            <ColumnDefinition   Width="Auto" ></ColumnDefinition>
+                            <ColumnDefinition   Width="5" ></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Border Grid.Column="0" Background="#59BF1C" BorderThickness="1" BorderBrush="Black" Width="Auto">
+                            <!--<WrapPanel Background="#59BF1C" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >-->
+                            <TextBlock  VerticalAlignment="Center" HorizontalAlignment="Stretch" FontFamily="Quicksand" Background="#59BF1C" Foreground="DarkBlue" Margin="3,0,3,0"  TextWrapping="Wrap" Width="Auto" Text="Open Next" PreviewMouseDown="btnOpenNext_Click"/>
+                            <!--</WrapPanel>-->
+                            
+                            </Border>
+                       
+                    </Grid>
+
+                    <Grid Width="Auto" Height="auto" Name="btnReadnly" Visibility="Collapsed">
+                        <Grid.ColumnDefinitions >
+                            <ColumnDefinition   Width="Auto" ></ColumnDefinition>
+                            <ColumnDefinition   Width="5" ></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0" Background="#F78474" BorderThickness="1" BorderBrush="Black" Width="Auto">
+                            <!--<WrapPanel  Background="#F78474">-->
+                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Stretch" FontFamily="Quicksand"  Background="#F78474" Foreground="White" Margin="3,0,3,0"   TextWrapping="Wrap" Width="Auto"  Text="Read Only" />
+                            <!--</WrapPanel>-->
+                        </Border>
+                       
+                    </Grid>
+                   
+                    <Grid Width="Auto" Height="auto" Background="Red"   Name="BtnOffline" Visibility="Collapsed">
+                        <Grid.ColumnDefinitions >
+                            <ColumnDefinition   Width="Auto" ></ColumnDefinition>
+                            <ColumnDefinition   Width="5" ></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0"  BorderThickness="1" BorderBrush="Black" Width="Auto">
+                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Stretch" FontFamily="Quicksand"  Background="Red"    Width="Auto"  Text="OffLine"/>
+                        </Border>
+                        
+                    </Grid>
+
+                    <Grid Width="Auto" Height="auto" Name="ButtonPin" Visibility="Collapsed">
+                        <Grid.ColumnDefinitions >
+                            <ColumnDefinition   Width="Auto" ></ColumnDefinition>
+                            <ColumnDefinition   Width="5" ></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0" Background="LightGray" BorderThickness="1" BorderBrush="Black" Width="Auto">
+                            <WrapPanel VerticalAlignment="Center" HorizontalAlignment="Stretch" Width="Auto" Background="LightGray" PreviewMouseDown="ButtonPin_Click" >
+                                <TextBlock VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Name="txtAutoClose"  FontFamily="Quicksand"  Foreground="DarkBlue" Margin="2,0,0,0"   Text="Auto Close:" />
+                                <TextBlock VerticalAlignment="Center"  Name="txtACStatus"  FontFamily="Quicksand" HorizontalAlignment="Left" Margin="2,0,3,0" Width="Auto"  Foreground="DarkBlue"   Text="OFF" />
+                            </WrapPanel>
+                        </Border>
+                       
+                    </Grid>
+                    
+                    <!--<Label Visibility="Collapsed"   Tag="UnAttentedPin"     HorizontalAlignment="Right" VerticalAlignment="Center"    Content=""  FontWeight="ExtraBold"   Width="15" Height="15"      PreviewMouseDown="ButtonPin_Click"  Name="ButtonPin"  >
+
+                        <Label.Background>
+                            <ImageBrush ImageSource="Resources/unpin.png"/>
+                        </Label.Background>
+                    </Label>-->
+                    <Grid Width="Auto" Name="BtncloseWork" >
+                        <Border BorderThickness="1" BorderBrush="Black" Width="Auto">
+                            <Label  FontFamily="Quicksand"  Background="Red" Foreground="WHITE" Content="Close" Width="Auto"   PreviewMouseDown= "BtncloseWork_PreviewMouseDown"   >
+
+                            </Label>
+                        </Border>
+                    </Grid>
+                </WrapPanel>
+            </Ribbon.HelpPaneContent>
+
+            <!--<Ribbon.HelpPaneContent>
+                <RibbonButton Name="btnCloseWork"  Click="CloseWork_Click" SmallImageSource="/Resources/CloseWork.png" />
+            </Ribbon.HelpPaneContent>-->
+
+            <!--<Ribbon.ApplicationMenu >
+                <RibbonApplicationMenu Visibility="Collapsed"   >
+                </RibbonApplicationMenu>
+            </Ribbon.ApplicationMenu>
+            <RibbonTab   Header="Work" KeyTip="O" >
+
+
+                <RibbonGroup x:Name="WorkRibbonTabGroup"  Header="Work">
+                        <RibbonButton Name="btnOpenWork"  Click="OpenWork_Click"    LargeImageSource="/Resources/OpenWork.png"  Label="Open" KeyTip="O">
+                    </RibbonButton>               
+
+                </RibbonGroup>
+                    <RibbonGroup x:Name="WorkRibbonTabCloseGroup" Header="Close">
+                        <RibbonButton Name="btnCloseWork"  Click="CloseWork_Click"    LargeImageSource="/Resources/CloseWork.png"  Label="Close" KeyTip="C">
+                        </RibbonButton>
+
+                    </RibbonGroup>
+
+               
+            
+            </RibbonTab>-->
+            <!--<Ribbon.HelpPaneContent>-->
+
+            <!--<WrapPanel>
+                    -->
+            <!--<Label Name="btnOpenNext"  FontFamily="Consolas"  Background="Green"  Content="OpenNext"/>
+                    <Label Name="btnReadnly" FontFamily="Consolas"   Background="Red"  Width="0"  Content="Readonly"/>-->
+            <!--
+                    <Label Name="BtnOffline" FontFamily="Consolas"  Background="Red"    Width="60"  Content="OffLine"/>
+                    <Label Visibility="Visible"         Tag="UnAttentedPin"        Content=""  FontWeight="ExtraBold"   Width="15" Height="15"      PreviewMouseDown="ButtonPin_Click"  Name="ButtonPin"  >
+
+                        <Label.Background>
+                            <ImageBrush ImageSource="Resources/unpin.png"/>
+                        </Label.Background>
+                    </Label>
+                </WrapPanel>
+
+            </Ribbon.HelpPaneContent>-->
+        </Ribbon>
+
+        <!--<Label Visibility="Collapsed"  Margin="0,25,5,0"    Grid.Row="0" Grid.Column="0"  Tag="UnAttentedPin"    HorizontalAlignment="Right" VerticalAlignment="Top"    Content=""  FontWeight="ExtraBold"   Width="15" Height="15"      PreviewMouseDown="ButtonPin_Click"  Name="ButtonPin"  >
+
+            <Label.Background>
+                <ImageBrush ImageSource="Resources/unpin.png"/>
+            </Label.Background>
+        </Label>-->
+        <!--<Label  Name="BtnOffline"  Visibility="Visible"  Content="Offline"   Foreground="White" Background="Red"   Margin="0,25,5,0"    Grid.Row="0" Grid.Column="0"    HorizontalAlignment="Right" VerticalAlignment="Top"    FontWeight="ExtraBold"   Width="55" Height="25"         >
+
+
+        </Label>-->
+        <StackPanel Focusable="False"  Name="BannerPanel"  Grid.Column="0"       Grid.Row="1"   >
+        </StackPanel>
+
+        <StackPanel Visibility="Collapsed" Focusable="False"  Grid.Column="0"    Name="pnlNotifyHeader"    Grid.Row="2"   HorizontalAlignment="Stretch" VerticalAlignment="Stretch"   >
+            <Grid   HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  >
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition   Width="Auto" ></ColumnDefinition>
+                    <ColumnDefinition   ></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"  ></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"  ></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Column="0"  Name="DisplayText"  Background="#ffd700" Content="Ready" HorizontalContentAlignment="Center" VerticalContentAlignment  ="Center"  Foreground="Black"        />
+
+                <StackPanel   Name="pnlNotify"   Focusable="False" Grid.Column="1"  Background="Black" >
+
+                </StackPanel>
+                <Button  Grid.Column="2"  Click="BtnNotificationOpen_Click" HorizontalContentAlignment="Center" VerticalContentAlignment  ="Center"   Name="BtnNotificationOpen" Background="#6494ed"  HorizontalAlignment="Right"   Content="Open Next "  FontWeight="ExtraBold"  Height="38" Width="Auto"    >
+                </Button>
+                <Button  Grid.Column="3" Click="BtnNotificationClose_Click" HorizontalContentAlignment="Center" VerticalContentAlignment  ="Center" Name="BtnNotificationClose" Background="#6494ed"  HorizontalAlignment="Right"   Content="X"  FontWeight="ExtraBold"  Height="38" Width="39"     >
+                </Button>
+
+
+            </Grid>
+        </StackPanel>
+        <DockPanel    Focusable="False"  Grid.Column="0" Background="#ffffcc"   Name="ToolstripError"    Grid.Row="3"  Height="25" Width="auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"   >
+            <Grid   HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  >
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition   Width="30" ></ColumnDefinition>
+                    <ColumnDefinition   Width="*" ></ColumnDefinition>
+                    <ColumnDefinition   Width="25" ></ColumnDefinition>
+                    <ColumnDefinition   Width="25"    ></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Column="0"  Focusable="False"    HorizontalAlignment="Center" VerticalAlignment="Center"    Content=""  FontWeight="ExtraBold"  Height="20" Width="20"   Name="lblerrIcon"  >
+                    <Label.Background>
+                        <ImageBrush ImageSource="Resources/ExpWarning.png"/>
+                    </Label.Background>
+                </Label>
+
+                <TextBlock  Grid.Column="1" Focusable="False" VerticalAlignment="Top" HorizontalAlignment="Stretch" FontFamily="Quicksand"   Background="#ffffcc"    Name="lblToolstripError"   />
+
+                <Label   Grid.Column="2" Focusable="False"  HorizontalAlignment="Center" VerticalAlignment="Center"   Content=""  FontWeight="ExtraBold"  Height="20" Width="20" PreviewMouseDown="ButtonExport_PreviewMouseDown"  Name="ButtonExport" Margin="0,1,0,0"  >
+                    <Label.Background>
+                        <ImageBrush ImageSource="Resources/Export.png"/>
+                    </Label.Background>
+                </Label>
+                <Button  Grid.Column="3" Focusable="False"  Background="#ffffcc"  HorizontalAlignment="Right" VerticalAlignment="Center"   Content="X"  FontWeight="ExtraBold"  Height="20" Width="24" Click="ButtonToolstripError_Click"  Name="ButtonToolstripError"  >
+
+                </Button>
+                <!--<Grid.ColumnDefinitions >
+                    <ColumnDefinition   Width="2.5*" ></ColumnDefinition>
+                    <ColumnDefinition   Width="88.5*" ></ColumnDefinition>
+                    <ColumnDefinition   Width="3.5*" ></ColumnDefinition>
+                    <ColumnDefinition   Width="3.5*"    ></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Column="0"  Focusable="False"    HorizontalAlignment="Stretch"     Content=""  FontWeight="ExtraBold"  Height="28"    Name="lblerrIcon"  >
+                    <Label.Background>
+                        <ImageBrush ImageSource="Resources/Warning.png"/>
+                    </Label.Background>
+                </Label>
+
+                <Label  Grid.Column="1" Focusable="False"    Background="#ffffcc"    Name="lblToolstripError"   />
+
+                <Label   Grid.Column="2" Focusable="False"  HorizontalAlignment="Right"   Content=""  FontWeight="ExtraBold"  Height="28" Width="30" PreviewMouseDown="ButtonExport_PreviewMouseDown"  Name="ButtonExport" Margin="0,1,0,0" VerticalAlignment="Top"  >
+                    <Label.Background>
+                        <ImageBrush ImageSource="Resources/Export.png"/>
+                    </Label.Background>
+                </Label>
+                <Button  Grid.Column="3" Focusable="False"  Background="#ffffcc"  HorizontalAlignment="Right"   Content="X"  FontWeight="ExtraBold"  Height="30" Width="24" Click="ButtonToolstripError_Click"  Name="ButtonToolstripError"  >
+
+                </Button>-->
+
+
+            </Grid>
+        </DockPanel>
+
+        <DockPanel Focusable="False"  Grid.Column="0"  Background="#f0ffff" Visibility="Collapsed"   Name="ToolstripReadOnly"    Grid.Row="4"  Height="30" Width="auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"   >
+
+
+
+
+            <StackPanel  Orientation="Horizontal" HorizontalAlignment="Right"   >
+                <Label   Background="Red"    Content= "Readonly"  Foreground ="Gold"  Name="lblToolReadonly"   />
+            </StackPanel>
+
+        </DockPanel>
+
+
+
+        <Popup Name="Waitcursor" PlacementTarget="{Binding ElementName=grdMain}"  Placement="Center"  Width="295" Height="104" >
+
+            <StackPanel   Background="#253361" >
+                <Grid Margin="0,5">
+                    <Grid.RowDefinitions >
+                        <RowDefinition Height="Auto"  ></RowDefinition>
+                        <RowDefinition  Height="Auto"   ></RowDefinition>
+                        <RowDefinition Height="auto"   ></RowDefinition>
+                        <RowDefinition   Height="auto"   ></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions >
+                        <ColumnDefinition   ></ColumnDefinition>
+                        <ColumnDefinition   ></ColumnDefinition>
+
+                    </Grid.ColumnDefinitions>
+                    <Label Name="LblLoading" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left"  VerticalContentAlignment="Stretch"   Content="Loading..." Foreground="#f57f2a"  FontSize="22"  FontFamily="Quicksand"  ></Label>
+                    <Label Name="LblShowtext" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"  Foreground="#f57f2a" FontSize="14"  FontFamily="Quicksand"  Content="Loading..."  ></Label>
+                    <ProgressBar Name="Prgbar" Grid.Row="2"  Grid.ColumnSpan="2"  Height="8"  ></ProgressBar>
+                    <Label Name="LblTimer" Visibility="Collapsed"  Grid.Row="3" Grid.Column="1" FontSize="14"  HorizontalContentAlignment="Right" Content="11:20"  FontFamily="Quicksand"  Foreground="#f57f2a"  ></Label>
+                </Grid>
+            </StackPanel>
+        </Popup>
+        <!--</Popup>-->
+        <!--<LayoutManager:LayoutManager/>-->
+        <DockPanel Name="MasterLayout" Focusable="False"  Grid.Column="0"    Grid.Row="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"   >
+
+        </DockPanel>
+
+
+
+    </Grid>
+   
+</RibbonWindow>

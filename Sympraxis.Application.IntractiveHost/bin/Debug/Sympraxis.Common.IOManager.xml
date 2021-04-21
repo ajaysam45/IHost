@@ -1,0 +1,120 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+Sympraxis.Common.IOManager
+</name>
+</assembly>
+<members>
+<member name="P:Sympraxis.Common.IOManager.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:Sympraxis.Common.IOManager.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:Sympraxis.Common.IOManager.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member><member name="M:Sympraxis.Common.IOManager.IOManager.CheckDuplicateFile(System.String)">
+	<summary>
+	</summary>
+	<param name="savedFilePath"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Sympraxis.Common.IOManager.IOManager.DeleteFile(System.String)">
+	<summary>
+	</summary>
+	<param name="FilePath"></param>
+	<remarks></remarks>
+</member><member name="M:Sympraxis.Common.IOManager.IOManager.PutFile(System.String)">
+	<summary>
+ PutFile
+ </summary>
+	<param name="LocalFile">LocalFile</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Sympraxis.Common.IOManager.IOManager.PutFile(System.String,System.String)">
+	<summary>
+ PutFile
+ </summary>
+	<param name="LocalFile">LocalFile</param>
+	<param name="RemoteFile">RemoteFile</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Sympraxis.Common.IOManager.IOManager.MoveFile(System.String,System.String)">
+	<summary>
+ MoveFile
+ </summary>
+	<param name="LocalFile">LocalFile</param>
+	<param name="RemoteFile">RemoteFile</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Sympraxis.Common.IOManager.IOManager.ReadFile(System.String,System.String)">
+	<summary>
+ ReadFile
+ </summary>
+	<param name="LocalFile">LocalFile</param>
+	<param name="key">key</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Sympraxis.Common.IOManager.IOManager.WriteFile(System.String,System.String,System.IO.FileStream)">
+	<summary>
+ WriteFile
+ </summary>
+	<param name="LocalFile">LocalFile</param>
+	<param name="key">key</param>
+	<param name="Fstream">Fstream</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Sympraxis.Common.IOManager.IOManager.ZeroMemory(System.String,System.Int32)">
+	<summary>
+ 'Call this function to remove the key from memory after it is used for security.
+ </summary>
+	<param name="Destination"></param>
+	<param name="Length"></param>
+	<remarks></remarks>
+</member><member name="M:Sympraxis.Common.IOManager.IOManager.GenerateKey">
+	<summary>
+ 'Function to generate a key.
+ </summary>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Sympraxis.Common.IOManager.IOManager.EncryptFile(System.String,System.String,System.String)">
+	<summary>
+ 'EncryptFile
+ </summary>
+	<param name="sInputFilename">Input file path</param>
+	<param name="sOutputFilename">Output file path</param>
+	<param name="sKey">Encrypt ASCII key</param>
+	<remarks></remarks>
+</member><member name="M:Sympraxis.Common.IOManager.IOManager.DecryptFile(System.String,System.String,System.String)">
+	<summary>
+ 'DecryptFile
+ </summary>
+	<param name="sInputFilename">Input file path</param>
+	<param name="sOutputFilename">Output file path</param>
+	<param name="sKey">Decryp ASCII key</param>
+	<remarks></remarks>
+</member><member name="M:Sympraxis.Common.IOManager.IOManager.GetDecryptFile(System.String,System.String)">
+	<summary>
+ 'GetDecryptFile
+ </summary>
+	<param name="sInputFilename">Input file path</param>
+	<param name="sKey">Decrypt ASCII key</param>
+	<returns>Decrypted file stream</returns>
+	<remarks></remarks>
+</member><member name="M:Sympraxis.Common.IOManager.IOManager.GetDecryptFileWipToLocal(System.String,System.String)">
+	<summary>
+ 'GetDecryptFileWipToLocal
+ </summary>
+	<param name="sInputFilename">Input file path</param>
+	<param name="sKey">Decrypt ASCII key</param>
+	<returns>Decrypted file stream</returns>
+	<remarks></remarks>
+</member>
+</members>
+</doc>

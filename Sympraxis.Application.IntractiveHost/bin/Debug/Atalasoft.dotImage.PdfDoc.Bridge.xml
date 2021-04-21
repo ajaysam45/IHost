@@ -1,0 +1,1389 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Atalasoft.dotImage.PdfDoc.Bridge</name>
+    </assembly>
+    <members>
+        <member name="T:Atalasoft.Annotate.Exporters.PdfAnnotationDataExporter">
+            <summary> The <see cref="T:Atalasoft.Annotate.Exporters.PdfAnnotationDataExporter"/> object is capable of taking DotImage Annotation objects
+            and translating them into a format suitable for PDF. </summary>
+        </member>
+        <member name="P:Atalasoft.Annotate.Exporters.PdfAnnotationDataExporter.UserPassword">
+            <summary>
+            Gets or sets the user password to use when opening and saving the PDF.
+            </summary>
+            <value>
+            The user password.
+            </value>
+        </member>
+        <member name="P:Atalasoft.Annotate.Exporters.PdfAnnotationDataExporter.OwnerPassword">
+            <summary>
+            Gets or sets the owner password to use when opening and saving the PDF.
+            </summary>
+            <value>
+            The owner password.
+            </value>
+        </member>
+        <member name="M:Atalasoft.Annotate.Exporters.PdfAnnotationDataExporter.#ctor">
+            <summary> Constructs a new <see cref="T:Atalasoft.Annotate.Exporters.PdfAnnotationDataExporter"/> object. </summary>
+        </member>
+        <member name="M:Atalasoft.Annotate.Exporters.PdfAnnotationDataExporter.#ctor(System.String,System.String)">
+            <summary> Constructs a new <see cref="T:Atalasoft.Annotate.Exporters.PdfAnnotationDataExporter"/> object with passwords set for loading and saving the PDFs. </summary>
+            <param name="userPassword">The user password to use when opening and saving the PDF.</param>
+            <param name="ownerPassword">The owner password to use when opening and saving the PDF.</param>
+        </member>
+        <member name="P:Atalasoft.Annotate.Exporters.PdfAnnotationDataExporter.CanExport">
+            <summary> For <see cref="T:Atalasoft.Annotate.Exporters.PdfAnnotationDataExporter"/>, this property always return true. </summary>
+            <value> True. </value>
+        </member>
+        <member name="P:Atalasoft.Annotate.Exporters.PdfAnnotationDataExporter.CanExportOver">
+            <value> False. </value>
+            <summary> For <see cref="T:Atalasoft.Annotate.Exporters.PdfAnnotationDataExporter"/>, this property always return false. </summary>
+        </member>
+        <member name="P:Atalasoft.Annotate.Exporters.PdfAnnotationDataExporter.OverwriteExistingAnnotations">
+            <summary> Indicates whether or not the <see cref="T:Atalasoft.Annotate.Exporters.PdfAnnotationDataExporter"/> will overwrite annotations that already exist on a
+            page. </summary>
+            <remarks> When set to true, the <see cref="T:Atalasoft.Annotate.Exporters.PdfAnnotationDataExporter"/> will remove existing annotations on a PDF page before writing
+            annotations to be exported.  When set to <c>false</c>, the <c>PdfAnnotationExporter</c> will append annotations to the list of
+            existing annotations on a page. </remarks>
+        </member>
+        <member name="P:Atalasoft.Annotate.Exporters.PdfAnnotationDataExporter.AlwaysEmbedAnnotationData">
+            <summary> Indicates whether or not the <see cref="T:Atalasoft.Annotate.Exporters.PdfAnnotationDataExporter"/> will embed data representing the DotImage
+            annotation in its entirety. </summary>
+            <remarks> The <see cref="T:Atalasoft.Annotate.Exporters.PdfAnnotationDataExporter"/> tries to build equivalent PDF annotations for known annotation types.  There
+            is not always a 1:1 match with the capabilities of DotImage annotations.  When this <c>AlwaysEmbedAnnotationData</c> is
+            set to <c>true</c>, the DotImage data will always be embeded in the equivalent PDF annotation.  This will create larger
+            PDFs, but the annotations will round-trip 100%. </remarks>
+        </member>
+        <member name="M:Atalasoft.Annotate.Exporters.PdfAnnotationDataExporter.IsValidFormat(System.IO.Stream)">
+            <summary> Determines if a stream contains PDF content. </summary>
+            <returns> Returns true if the stream contains PDF, false otherwise. </returns>
+            <exception> Thrown if the stm argument is null (Nothing in VB). </exception>
+            <param name="stm"> A non-null stream. </param>
+        </member>
+        <member name="M:Atalasoft.Annotate.Exporters.PdfAnnotationDataExporter.Construct">
+            <summary> Constructs a new <see cref="T:Atalasoft.Annotate.Exporters.PdfAnnotationDataExporter"/>. </summary>
+            <returns> A new instance of <see cref="T:Atalasoft.Annotate.Exporters.PdfAnnotationDataExporter"/>. </returns>
+        </member>
+        <member name="M:Atalasoft.Annotate.Exporters.PdfAnnotationDataExporter.LLExportOver(System.IO.Stream,System.Drawing.SizeF,Atalasoft.Annotate.AnnotationUnit,Atalasoft.Imaging.Dpi,Atalasoft.Annotate.LayerData,System.Int32)">
+            <summary>Low-level implementation of exporting a set of annotations over an existing stream.</summary>
+            <param name="destStream">The destrination stream for the document.</param>
+            <param name="pageSize"> The size of the source page.</param>
+            <param name="units"> The units in which the page size is expressed.</param>
+            <param name="resolution"> The resolution of the page.</param>
+            <param name="layer"> The page of annotations to export.</param>
+            <param name="frameIndex"> The page number for exporting.</param>
+            <exception cref="T:System.NotImplementedException">This feature is not supported in the base implementation.</exception>
+        </member>
+        <member name="M:Atalasoft.Annotate.Exporters.PdfAnnotationDataExporter.LLExportOver(System.IO.Stream,System.Drawing.SizeF[],Atalasoft.Annotate.AnnotationUnit,Atalasoft.Imaging.Dpi[],Atalasoft.Annotate.AnnotationDataCollection)">
+            <summary>Low-level implementation of exporting a set of annotations over an existing stream.</summary>
+            <param name="destStream"> The destination stream for the document. </param>
+            <param name="pageSizes"> An array of sizes of the source pages. </param>
+            <param name="units"> An array of units in which the page sizes are expressed. </param>
+            <param name="resolutions"> An array of resolutions of the pages. </param>
+            <param name="layers"> A collection of pages of annotations. </param>
+            <exception cref="T:System.NotImplementedException">This feature is not supported in the base implementation.</exception>
+        </member>
+        <member name="M:Atalasoft.Annotate.Exporters.PdfAnnotationDataExporter.LLExport(System.IO.Stream,System.IO.Stream,System.Drawing.SizeF,Atalasoft.Annotate.AnnotationUnit,Atalasoft.Imaging.Dpi,Atalasoft.Annotate.LayerData,System.Int32)">
+            <summary>Low-level implementation of exporting a single page of annotations to a given stream.</summary>
+            <param name="sourceStream"> The original source stream for the document. </param>
+            <param name="destStream"> The destination stream for the document. </param>
+            <param name="pageSize"> The size of the source page. </param>
+            <param name="units"> The units in which the page size is expressed. </param>
+            <param name="resolution"> The resolution of the page. </param>
+            <param name="layer"> The page of annotations to export. </param>
+            <param name="frameIndex"> The page number for exporting. </param>
+        </member>
+        <member name="M:Atalasoft.Annotate.Exporters.PdfAnnotationDataExporter.Export(Atalasoft.PdfDoc.PdfDocument,System.IO.Stream,Atalasoft.Annotate.AnnotationUnit,Atalasoft.Imaging.Dpi[],Atalasoft.Annotate.AnnotationDataCollection)">
+            <summary>
+            Saves the Pdf file into destStream with exported annotations layers.
+            </summary>
+            <param name="doc">The source document.</param>
+            <param name="destStream">Destination stream to save the document into.</param>
+            <param name="unit">A unit to measure annotation.</param>
+            <param name="resolutions">Page resolutions.</param>
+            <param name="layers">Layers of annotations to save into the file.</param>
+        </member>
+        <member name="M:Atalasoft.Annotate.Exporters.PdfAnnotationDataExporter.LLExport(System.IO.Stream,System.IO.Stream,System.Drawing.SizeF[],Atalasoft.Annotate.AnnotationUnit,Atalasoft.Imaging.Dpi[],Atalasoft.Annotate.AnnotationDataCollection)">
+            <summary>Low-level implementation of exporting a multiple pages of annotations to a given stream. </summary>
+            <param name="sourceStream"> The original source stream for the document. </param>
+            <param name="destStream"> The destination stream for the document. </param>
+            <param name="pageSizes"> An array of sizes of the source pages. </param>
+            <param name="units"> An array of units in which the page sizes are expressed. </param>
+            <param name="resolutions"> An array of resolutions of the pages. </param>
+            <param name="layers"> A collection of pages of annotations. </param>
+        </member>
+        <member name="P:Atalasoft.Annotate.Exporters.PdfAnnotationDataExporter.UnknownAnnotationHandler">
+            <summary> Sets or gets a handler for unknown annotation types. </summary>
+            <remarks><para>The <see cref="T:Atalasoft.Annotate.Exporters.PdfAnnotationDataExporter"/> knows how to handle a number of standard annotation types.  When an
+            unknown annotation type is found the <see cref="T:Atalasoft.Annotate.Exporters.PdfUnknownAnnotationHandler"/> is invoked to select the mechanism for best
+            exporting this type of annotation.  This delegate should return a new <see cref="T:Atalasoft.Annotate.Exporters.PdfAnnotationExportPolicy"/> object
+            that describes how the object should be exported.  If the <c>UnknownAnnotationHandler</c> is set to <c>null</c>, the annotation
+            will be skipped.</para>
+            <para>The default value for <see cref="T:Atalasoft.Annotate.Exporters.PdfUnknownAnnotationHandler"/> is an instance of <see cref="T:Atalasoft.Annotate.Exporters.PdfAnnotationExportPolicy"/>
+            made with its default constructor.</para>
+            <para>When selecting a policy, an annotation can be skipped, aliased to another annotation, or embedded with a
+            facade.</para> </remarks>
+        </member>
+        <member name="T:Atalasoft.Annotate.Exporters.PdfAnnotationEmbeddingAction">
+            <summary> This enumeration is used to select how an unknown annotation type will be exported to pdf. </summary>
+        </member>
+        <member name="F:Atalasoft.Annotate.Exporters.PdfAnnotationEmbeddingAction.None">
+            <summary> No action - the annotation will be skipped. </summary>
+        </member>
+        <member name="F:Atalasoft.Annotate.Exporters.PdfAnnotationEmbeddingAction.EmbedAlias">
+            <summary> The annotation will be exported as a different annotation type entirely. </summary>
+        </member>
+        <member name="F:Atalasoft.Annotate.Exporters.PdfAnnotationEmbeddingAction.EmbedFacade">
+            <summary> The annotation will be exported with a set of images that represent its appearance in the PDF </summary>
+        </member>
+        <member name="T:Atalasoft.Annotate.Exporters.PdfAnnotationExportPolicy">
+            <summary><see cref="T:Atalasoft.Annotate.Exporters.PdfAnnotationExportPolicy"/> is a class used to help the <see cref="T:Atalasoft.Annotate.Exporters.PdfAnnotationDataExporter"/> select a mechanism for
+            exporting an unknown annotation type. </summary>
+            <remarks> <para>Currently there are three general policies for handling unknown annotation types:</para>
+            <list type="number">
+            <item>
+                <term>None</term>
+                <description>the annotation will be skipped.</description>
+            </item>
+            <item>
+                <term>EmbedAlias</term>
+                <description>a different annotation type will be substituted for an unknown annotation.  The unknown annotation
+            data will be embedded within the alias so it can be recovered.  The allows a "close match" annotation to be selected
+            instead.</description>
+            </item>
+            <item>
+                <term>Facade</term>
+                <description>a PDF rectangle annotation will be embedded with a visual facade that makes it appear differently.  PDF
+            defines up to three appearances for an annotation, Normal, Rollover, and Clicked.  There are up to three "facade"
+            images that can be set to represent these appearances.</description>
+            </item>
+            </list></remarks>
+        </member>
+        <member name="M:Atalasoft.Annotate.Exporters.PdfAnnotationExportPolicy.#ctor">
+            <summary> Constructs a new <see cref="T:Atalasoft.Annotate.Exporters.PdfAnnotationExportPolicy"/> object. </summary>
+        </member>
+        <member name="P:Atalasoft.Annotate.Exporters.PdfAnnotationExportPolicy.EmbeddingAction">
+            <summary> Sets or gets the action that will be taken when an unknown annotation will be exported. </summary>
+            <remarks> The default value is <see cref="F:Atalasoft.Annotate.Exporters.PdfAnnotationEmbeddingAction.None">None</see>, which will skip the annotation. </remarks>
+        </member>
+        <member name="P:Atalasoft.Annotate.Exporters.PdfAnnotationExportPolicy.AnnotationFacades">
+            <summary> Sets or gets a collection of <see cref="T:Atalasoft.Imaging.AtalaImage"/> objects to use as facades in PDF. </summary>
+            <remarks> <para>This property should be set to a set of three <see cref="T:Atalasoft.Imaging.AtalaImage"/> objects.  Each one must be the same size. 
+            Each image may be null.  The first image will be used for the "normal" appearance.  The second will be used for the
+            rollover appearance.  The third will be used for the clicked appearance.</para>
+            <para>If the first image is null, DotImage will create a facade on the fly by rendering the annotation to an
+            AtalaImage and using that as the normal facade.</para>
+            <para>Facades with an alpha channel will be split into a color image and an 8 bit mask.</para>
+            <para>Facades may not be in the following PixelFormats:</para>
+            <list type="bullet">
+            <item><term>16 bit grayscale with alpha</term></item>
+            <item><term>48 bit color</term></item>
+            <item><term>64 bit color with alpha</term></item>
+            </list> </remarks>
+        </member>
+        <member name="P:Atalasoft.Annotate.Exporters.PdfAnnotationExportPolicy.AnnotationDataAlias">
+            <summary> Sets or gets an <see cref="T:Atalasoft.Annotate.AnnotationData"/> object to be used in place of an unknown annotation type. </summary>
+        </member>
+        <member name="T:Atalasoft.Annotate.Exporters.PdfUnknownAnnotationHandler">
+            <summary>Represents a method for selecting a <see cref="T:Atalasoft.Annotate.Exporters.PdfAnnotationExportPolicy"/> to use when an
+            unknown annotation type is encountered.</summary>
+            <param name="annotation">An <see cref="T:Atalasoft.Annotate.AnnotationData"/> of an unknown type.</param>
+            <returns>The <see cref="T:Atalasoft.Annotate.Exporters.PdfAnnotationExportPolicy"/> that describes how the annotation should be handled.</returns>
+            <seealso cref="P:Atalasoft.Annotate.Exporters.PdfAnnotationDataExporter.UnknownAnnotationHandler"/>
+        </member>
+        <member name="T:Atalasoft.Annotate.Exporters.NamespaceDoc">
+            <summary> The <STRONG>Atalasoft.Annotate.Exporters</STRONG> namespace provides objects used to export annotations to
+            a specific format.  Currently PDF is the only format supported. </summary>
+        </member>
+        <member name="T:Atalasoft.Annotate.Importers.PdfAnnotationDataImporter">
+            <summary> Constructs a new <STRONG>PdfAnnotationDataImporter</STRONG> object. </summary>
+        </member>
+        <member name="F:Atalasoft.Annotate.Importers.PdfAnnotationDataImporter._defaultMerger">
+            <value> This is a default merger that is used if there is no other merger available. </value>
+            <summary> Gets the default merger used by DotImage. </summary>
+            <remarks> The DefaultMerger is an instance of AnnotationDataPropertyMerger constructed with the default constructor.
+            </remarks>
+        </member>
+        <member name="P:Atalasoft.Annotate.Importers.PdfAnnotationDataImporter.AnnotationStream">
+            <summary>
+            The stream which contains the annotation information. 
+            </summary>
+        </member>
+        <member name="P:Atalasoft.Annotate.Importers.PdfAnnotationDataImporter.UserPassword">
+            <summary>
+            Gets or sets the user password to open the PDF containing the annotations.
+            </summary>
+            <value>
+            The user password for opening the PDF.
+            </value>
+        </member>
+        <member name="P:Atalasoft.Annotate.Importers.PdfAnnotationDataImporter.OwnerPassword">
+            <summary>
+            Gets or sets the owner password to open the PDF containing the annotations.
+            </summary>
+            <value>
+            The owner password for opening the PDF.
+            </value>
+        </member>
+        <member name="M:Atalasoft.Annotate.Importers.PdfAnnotationDataImporter.#ctor">
+            <summary> Constructs a new <STRONG>PdfAnnotationDataImporter</STRONG>. </summary>
+            <overloads> Constructs a new <STRONG>PdfAnnotationDataImporter</STRONG> object. </overloads>
+        </member>
+        <member name="M:Atalasoft.Annotate.Importers.PdfAnnotationDataImporter.#ctor(System.IO.Stream)">
+            <summary> Constructs a new <STRONG>PdfAnnotationDataImporter</STRONG> for the given stream. </summary>
+            <exception> Thrown if the stm argument is null (Nothing in VB). </exception>
+            <exception> Thrown if the stream is not seekable. </exception>
+            <param name="stm"> A non-null stream containing a PDF document. </param>
+        </member>
+        <member name="M:Atalasoft.Annotate.Importers.PdfAnnotationDataImporter.#ctor(System.IO.Stream,System.String,System.String)">
+            <summary> Constructs a new <STRONG>PdfAnnotationDataImporter</STRONG> for the given stream. </summary>
+            <exception> Thrown if the stm argument is null (Nothing in VB). </exception>
+            <exception> Thrown if the stream is not seekable. </exception>
+            <param name="stm"> A non-null stream containing a PDF document. </param>
+            <param name="userPassword">The user password for the PDF.</param>
+            <param name="ownerPassword">The owner password for the PDF.</param>
+        </member>
+        <member name="M:Atalasoft.Annotate.Importers.PdfAnnotationDataImporter.#ctor(System.IO.Stream,System.String)">
+            <summary> Constructs a new <STRONG>PdfAnnotationDataImporter</STRONG> for the given stream. </summary>
+            <exception> Thrown if the stm argument is null (Nothing in VB). </exception>
+            <exception> Thrown if the stream is not seekable. </exception>
+            <param name="stm"> A non-null stream containing a PDF document. </param>
+            <param name="password">The password to open the PDF.</param>
+        </member>
+        <member name="M:Atalasoft.Annotate.Importers.PdfAnnotationDataImporter.LLLoad">
+            <inheritdocs/>
+        </member>
+        <member name="M:Atalasoft.Annotate.Importers.PdfAnnotationDataImporter.LLGetAnnotationCount(System.Int32)">
+            <inheritdocs/>
+        </member>
+        <member name="M:Atalasoft.Annotate.Importers.PdfAnnotationDataImporter.LLGetPageCount">
+            <inheritdocs/>
+        </member>
+        <member name="M:Atalasoft.Annotate.Importers.PdfAnnotationDataImporter.IsValidFormat(System.IO.Stream)">
+            <summary> Indicates whether or not the stream is a PDF. </summary>
+            <exception cref="T:System.ArgumentNullException"> Thrown if the stm argument is null (Nothing in VB). </exception>
+            <param name="stm"> A non-null stream. </param>
+        </member>
+        <member name="M:Atalasoft.Annotate.Importers.PdfAnnotationDataImporter.FromStream(System.IO.Stream)">
+            <summary> Returns a new P<STRONG>dfAnnotationDataImporter</STRONG> object attached to the given Stream. </summary>
+            <param name="stm"> A non-null stream containing a PDF document. </param>
+        </member>
+        <member name="M:Atalasoft.Annotate.Importers.PdfAnnotationDataImporter.Import(System.Int32)">
+            <inheritdocs/>
+        </member>
+        <member name="M:Atalasoft.Annotate.Importers.PdfAnnotationDataImporter.LLImport(System.Int32,System.Int32)">
+            <inheritdocs/>
+        </member>
+        <member name="P:Atalasoft.Annotate.Importers.PdfAnnotationDataImporter.AnnotationDataMergers">
+            <summary> Gets a collection of mergers that are used to import annotation data from PDF annotations. </summary>
+            <remarks> <para>When annotations have been exported to a PDF with DotImage annotation embedded in them, the
+            DotImage annotation does not change when a user interacts with the annotation contained in the PDF.  As a result,
+            some properties of the embedded annotation and the imported annotation may not match, such as Bounds, Fill, and so
+            on.</para>
+            <para>AnnotationDataMergers are used to select a mechanism by which properties will be merged from the imported
+            annotation and the embedded annotation.  By default, this is done by selecting properties in the imported annotation
+            that match properties in the embedded annotation by name and copying them into the embedded annotation based on a
+            choice.</para>
+            <para>Given the type of the embedded annotation, a merge delegate is selected that will choose how properties will
+            be copied from one annotation to the other.</para> </remarks>
+        </member>
+        <member name="P:Atalasoft.Annotate.Importers.PdfAnnotationDataImporter.DefaultMerger">
+            <value> This is a default merger that is used if there is no other merger available. </value>
+            <summary> Gets the default merger used by DotImage. </summary>
+            <remarks> The DefaultMerger is an instance of AnnotationDataPropertyMerger constructed with the default constructor.
+            </remarks>
+        </member>
+        <member name="P:Atalasoft.Annotate.Importers.PdfAnnotationDataImporter.SkipUnknownAnnotationTypes">
+            <summary>
+            Gets or sets a value indicating whether to skip unknown annotations.
+            </summary>
+        </member>
+        <member name="T:Atalasoft.Annotate.Importers.AnnotationDataPropertyChoice">
+            <summary> Enumeration used to select how one property is chosen from a pair of AnnotationData objects. </summary>
+        </member>
+        <member name="F:Atalasoft.Annotate.Importers.AnnotationDataPropertyChoice.FromPdfData">
+            <summary> Use a property from the imported PDF annotation </summary>
+        </member>
+        <member name="F:Atalasoft.Annotate.Importers.AnnotationDataPropertyChoice.FromSerializedData">
+            <summary> Use a property from the annotation data embedded within the PDF annotation </summary>
+        </member>
+        <member name="T:Atalasoft.Annotate.Importers.AnnotationDataMerger">
+            <summary> Merges data from one annotation into another, returning the merged annotation. </summary>
+            <param name="pdfAnnotationData"> An annotation that was imported from a PDF file </param>
+            <param name="serializedAnnotationData"> An annotation that was extracted from embedded data in the imported PDF
+            annotation </param>
+        </member>
+        <member name="T:Atalasoft.Annotate.Importers.AnnotationDataMergerDictionary">
+            <summary> THis is a collection of types and delegates that define how annotations are merged after importing.
+            </summary>
+        </member>
+        <member name="T:Atalasoft.Annotate.Importers.AnnotationDataPropertyMerger">
+            <summary> AnnotationDataPropertyMerger is a utility class that conditionally merges properties from one annotation
+            into another.  This class is used as the default property merger in the PdfAnnotationDataImporter. </summary>
+            <remarks> It is unlikely that this class is needed outside of the context of PdfAnnotationDataImporter, although it
+            could be used as a general mechanism for copying public properties from one AnnotationData object to another by
+            name. </remarks>
+        </member>
+        <member name="F:Atalasoft.Annotate.Importers.AnnotationDataPropertyMerger._mergeList">
+            <summary> Gets a collection of properties that will be merged from one annotation data object to another. </summary>
+        </member>
+        <member name="M:Atalasoft.Annotate.Importers.AnnotationDataPropertyMerger.#ctor">
+            <summary> Makes a default merger that will merge Location, Size, and Modified time. </summary>
+            <overloads> Constructs a new AnnotationDataPropertyMerger. </overloads>
+            <overloads>
+            </overloads>
+        </member>
+        <member name="M:Atalasoft.Annotate.Importers.AnnotationDataPropertyMerger.#ctor(System.String[])">
+            <summary> Makes a merger that will merge a set of properties by name. </summary>
+            <param name="items"> A list of items that will be copied from the imported PDF annotation into the embedded PDF
+            annotation. </param>
+        </member>
+        <member name="M:Atalasoft.Annotate.Importers.AnnotationDataPropertyMerger.MergeSpecificCommonProperties(Atalasoft.Annotate.AnnotationData,Atalasoft.Annotate.AnnotationData)">
+            <summary> Merges a set of properties from one object into another using the MergeList to select how it will be
+            merged. </summary>
+            <param name="pdfAnnotationData"> An annotation that was imported from a PDF file </param>
+            <param name="serializedAnnotationData"> An annotation that was extracted from embedded data in the imported PDF
+            annotation </param>
+        </member>
+        <member name="P:Atalasoft.Annotate.Importers.AnnotationDataPropertyMerger.MergeList">
+            <summary> Gets a collection of properties that will be merged from one annotation data object to another. </summary>
+        </member>
+        <member name="T:Atalasoft.Annotate.Importers.NamespaceDoc">
+            <summary> The <STRONG>Atalasoft.Annotate.Importers</STRONG> namespace contains classes used to import annotations
+            from a specific format into <STRONG>DotImage</STRONG> annotations. </summary>
+        </member>
+        <member name="T:Atalasoft.Annotate.UI.PdfAnnotationUIFactory">
+            <summary>
+            A class for initializing an <see cref="T:Atalasoft.Annotate.UI.AnnotationUIFactoryCollection"/> with PDF annotation UI factories.
+            </summary>
+        </member>
+        <member name="M:Atalasoft.Annotate.UI.PdfAnnotationUIFactory.Initialize(Atalasoft.Annotate.UI.AnnotationUIFactoryCollection)">
+            <summary>
+            Initializes a given <see cref="T:Atalasoft.Annotate.UI.AnnotationUIFactoryCollection"/> with a default set of PDF annotation UI factories.
+            </summary>
+            <param name="factoryCollection">The factory collection to populate.</param>
+            <remarks>If the given factory collection already has instances of the default PDF annotation UI factory types,
+            they will be preserved, and new ones will not be added.</remarks>
+        </member>
+        <member name="T:Atalasoft.Annotate.UI.PdfLineAnnotationFactory">
+            <summary> This class is used to generate a <see cref="T:Atalasoft.Annotate.Pdf.PdfLineAnnotation"/> from a <see cref="T:Atalasoft.Annotate.Pdf.PdfLineData"/> object.
+            </summary>
+        </member>
+        <member name="M:Atalasoft.Annotate.UI.PdfLineAnnotationFactory.#ctor">
+            <summary> Creates a new instance of <STRONG>PdfLineAnnotationFactory</STRONG>. </summary>
+        </member>
+        <member name="M:Atalasoft.Annotate.UI.PdfLineAnnotationFactory.GetAnnotationUI(Atalasoft.Annotate.AnnotationData)">
+            <summary> Returns a new <see cref="T:Atalasoft.Annotate.Pdf.PdfLineAnnotation"/> from the <see cref="T:Atalasoft.Annotate.Pdf.PdfLineData"/> provided. </summary>
+            <returns> A new <see cref="T:Atalasoft.Annotate.Pdf.PdfLineAnnotation"/> or null (Nothing in VB) if the data class was not a <see
+            cref="T:Atalasoft.Annotate.Pdf.PdfLineData"/> object. </returns>
+            <param name="data"> A <see cref="T:Atalasoft.Annotate.Pdf.PdfLineData"/> to create the annotation from. </param>
+        </member>
+        <member name="T:Atalasoft.Annotate.UI.PdfMarkupAnnotationFactory">
+            <summary> This class is used to generate a <see cref="T:Atalasoft.Annotate.Pdf.PdfMarkupAnnotation"/> from a <see cref="T:Atalasoft.Annotate.Pdf.PdfMarkupData"/>
+            object. </summary>
+        </member>
+        <member name="M:Atalasoft.Annotate.UI.PdfMarkupAnnotationFactory.#ctor">
+            <summary> Creates a new instance of <STRONG>PdfMarkupAnnotationFactory</STRONG>. </summary>
+        </member>
+        <member name="M:Atalasoft.Annotate.UI.PdfMarkupAnnotationFactory.GetAnnotationUI(Atalasoft.Annotate.AnnotationData)">
+            <summary> Returns a new <see cref="T:Atalasoft.Annotate.Pdf.PdfMarkupAnnotation"/> from a <see cref="T:Atalasoft.Annotate.Pdf.PdfMarkupData"/> object. </summary>
+            <returns> A new <see cref="T:Atalasoft.Annotate.Pdf.PdfMarkupAnnotation"/> or null (Nothing in VB) if the data is not a <see
+            cref="T:Atalasoft.Annotate.Pdf.PdfMarkupData"/> object. </returns>
+            <param name="data"> The <see cref="T:Atalasoft.Annotate.Pdf.PdfMarkupData"/> to create the annotation from. </param>
+        </member>
+        <member name="T:Atalasoft.Annotate.UI.Exporters.PdfAnnotationExporter">
+            <summary> The PdfAnnotationExporter object is capable of taking DotImage Annotation objects and translating them
+            into a format suitable for PDF. </summary>
+        </member>
+        <member name="M:Atalasoft.Annotate.UI.Exporters.PdfAnnotationExporter.#ctor">
+            <summary> Constructs a new PdfAnnotationExporter object. </summary>
+        </member>
+        <member name="P:Atalasoft.Annotate.UI.Exporters.PdfAnnotationExporter.CanExport">
+            <summary> Overridden. Returns false. </summary>
+        </member>
+        <member name="P:Atalasoft.Annotate.UI.Exporters.PdfAnnotationExporter.CanExportOver">
+            <summary> Overridden. Returns true. </summary>
+        </member>
+        <member name="M:Atalasoft.Annotate.UI.Exporters.PdfAnnotationExporter.IsValidFormat(System.IO.Stream)">
+            <summary> Determines if a stream contains PDF content. </summary>
+            <returns> Returns true if the stream contains PDF, false otherwise. </returns>
+            <param name="stm"> A non-null stream. </param>
+        </member>
+        <member name="M:Atalasoft.Annotate.UI.Exporters.PdfAnnotationExporter.Construct">
+            <summary> Constructs a new PdfAnnotationExporter. </summary>
+        </member>
+        <member name="M:Atalasoft.Annotate.UI.Exporters.PdfAnnotationExporter.LLExportOver(System.IO.Stream,System.Drawing.SizeF,Atalasoft.Annotate.AnnotationUnit,Atalasoft.Imaging.Dpi,Atalasoft.Annotate.UI.LayerAnnotation,System.Int32)">
+            <inheritdocs/>
+        </member>
+        <member name="M:Atalasoft.Annotate.UI.Exporters.PdfAnnotationExporter.LLExportOver(System.IO.Stream,System.Drawing.SizeF[],Atalasoft.Annotate.AnnotationUnit,Atalasoft.Imaging.Dpi[],Atalasoft.Annotate.UI.LayerCollection)">
+            <inheritdocs/>
+        </member>
+        <member name="M:Atalasoft.Annotate.UI.Exporters.PdfAnnotationExporter.LLExport(System.IO.Stream,System.IO.Stream,System.Drawing.SizeF,Atalasoft.Annotate.AnnotationUnit,Atalasoft.Imaging.Dpi,Atalasoft.Annotate.UI.LayerAnnotation,System.Int32)">
+            <inheritdocs/>
+        </member>
+        <member name="M:Atalasoft.Annotate.UI.Exporters.PdfAnnotationExporter.LLExport(System.IO.Stream,System.IO.Stream,System.Drawing.SizeF[],Atalasoft.Annotate.AnnotationUnit,Atalasoft.Imaging.Dpi[],Atalasoft.Annotate.UI.LayerCollection)">
+            <inheritdocs/>
+        </member>
+        <member name="T:Atalasoft.Annotate.UI.Importers.PdfAnnotationImporter">
+            <summary> <para>Constructs a new PdfAnnotationImporter object.</para>
+            <para>This class is obsolete:  Use <see cref="T:Atalasoft.Annotate.Importers.PdfAnnotationDataImporter"/> instead.</para> </summary>
+        </member>
+        <member name="P:Atalasoft.Annotate.UI.Importers.PdfAnnotationImporter.AnnotationStream">
+            <summary>
+            The stream which contains the annotation information. 
+            </summary>
+        </member>
+        <member name="M:Atalasoft.Annotate.UI.Importers.PdfAnnotationImporter.#cctor">
+            <overloads> Constructs a new PdfAnnotationImporter object. </overloads>
+        </member>
+        <member name="M:Atalasoft.Annotate.UI.Importers.PdfAnnotationImporter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Atalasoft.Annotate.UI.Importers.PdfAnnotationImporter"/> class.
+            </summary>
+        </member>
+        <member name="M:Atalasoft.Annotate.UI.Importers.PdfAnnotationImporter.#ctor(System.IO.Stream)">
+            <summary> Constructs a new PdfAnnotationImporterObject for the given stream. </summary>
+            <param name="stm"> A non-null stream containing a PDF document. </param>
+        </member>
+        <member name="M:Atalasoft.Annotate.UI.Importers.PdfAnnotationImporter.LLLoad">
+            <inheritdocs/>
+        </member>
+        <member name="M:Atalasoft.Annotate.UI.Importers.PdfAnnotationImporter.LLGetAnnotationCount(System.Int32)">
+            <inheritdocs/>
+        </member>
+        <member name="M:Atalasoft.Annotate.UI.Importers.PdfAnnotationImporter.LLGetPageCount">
+            <inheritdocs/>
+        </member>
+        <member name="M:Atalasoft.Annotate.UI.Importers.PdfAnnotationImporter.IsValidFormat(System.IO.Stream)">
+            <summary> Indicates whether or not the stream is a PDF. </summary>
+            <param name="stm"> A non-null stream. </param>
+        </member>
+        <member name="M:Atalasoft.Annotate.UI.Importers.PdfAnnotationImporter.FromStream(System.IO.Stream)">
+            <summary> Returns a new PdfAnnotationImporter object attached to the given Stream. </summary>
+            <exception> Thrown if the stm argument is null (Nothing in VB). </exception>
+            <exception> Thrown if the stream is not seekable. </exception>
+            <param name="stm"> A non-null stream containing a PDF document. </param>
+        </member>
+        <member name="M:Atalasoft.Annotate.UI.Importers.PdfAnnotationImporter.Import(System.Int32)">
+            <summary> Imports a page of annotations as LayerAnnotation. </summary>
+            <returns> A LayerAnnotation containing a set of annotations from the page, or null </returns>
+            <param name="pageNo"> The zero-based page from which annotations will be imported.  page is range checked against
+            the document. </param>
+            <overloads> Imports annotations from a stream. </overloads>
+        </member>
+        <member name="M:Atalasoft.Annotate.UI.Importers.PdfAnnotationImporter.LLImport(System.Int32,System.Int32)">
+            <inheritdocs/>
+        </member>
+        <member name="P:Atalasoft.Annotate.UI.Importers.PdfAnnotationImporter.Factories">
+            <inheritdocs/>
+        </member>
+        <member name="T:Atalasoft.Annotate.Pdf.PdfMarkupType">
+            <summary> Specifies the type of markup annotation. </summary>
+        </member>
+        <member name="F:Atalasoft.Annotate.Pdf.PdfMarkupType.Highlight">
+            <summary> A highlighter annotation. </summary>
+        </member>
+        <member name="F:Atalasoft.Annotate.Pdf.PdfMarkupType.Squiggly">
+            <summary> A squiggly underline annotation. </summary>
+        </member>
+        <member name="F:Atalasoft.Annotate.Pdf.PdfMarkupType.StrikeOut">
+            <summary> A strikeout annotation. </summary>
+        </member>
+        <member name="F:Atalasoft.Annotate.Pdf.PdfMarkupType.Underline">
+            <summary> An underline annotation. </summary>
+        </member>
+        <member name="T:Atalasoft.Annotate.Pdf.PdfAnnotation">
+            <summary> This is the base PDF annotation class all PDF annotations derive from.  This class should not be created
+            directly. </summary>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfAnnotation.#ctor">
+            <summary> Creates a new instance of PdfAnnotation with default parameters. </summary>
+            <overloads> Creates a new instance of <STRONG>PdfAnnotation</STRONG>. </overloads>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfAnnotation.#ctor(Atalasoft.Annotate.Pdf.PdfAnnotationData)">
+            <summary> Creates a new instance of <STRONG>PdfAnnotation</STRONG> specifying the <see cref="T:Atalasoft.Annotate.Pdf.PdfAnnotationData"/>
+            class. </summary>
+            <param name="data"> The <see cref="T:Atalasoft.Annotate.Pdf.PdfAnnotationData"/> class used by this annotation. </param>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfAnnotation.#ctor(Atalasoft.Annotate.AnnotationBrush,Atalasoft.Annotate.AnnotationPen,System.String,System.String,System.DateTime)">
+            <summary> Creates a new instance of PdfAnnotation specifying all of its parameters. </summary>
+            <param name="fill"> The brush used for filling the annotation or line cap. </param>
+            <param name="outline"> The outline for the annotation. </param>
+            <param name="text"> The text of the annotation. </param>
+            <param name="username"> The username of the person modifying it.  If null (Nothing in VB) the current user will be
+            retrieved from the system. </param>
+            <param name="modifiedDate"> The date when the annotation was last modified. </param>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfAnnotation.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary> Creates a new instance of <STRONG>PdfAnnotation</STRONG> from serialized information. </summary>
+            <param name="info"> A <STRONG>SerializationInfo</STRONG> object containing the serialized annotation. </param>
+            <param name="context"> A <STRONG>StreamingContext </STRONG>for this data. </param>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfAnnotation.Finalize">
+            <summary>
+            <see cref="T:Atalasoft.Annotate.Pdf.PdfAnnotation"/> class destructor.
+            </summary>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfAnnotation.Dispose(System.Boolean)">
+            <summary> Called when the annotation is being disposed. </summary>
+            <param name="disposing"> True if this was called from the public <see cref="M:Atalasoft.Annotate.Pdf.PdfAnnotation.Dispose"/> method.
+            </param>
+            <overloads> Releases resources used by the annotation. </overloads>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfAnnotation.Dispose">
+            <summary> Releases resources used by the annotation. </summary>
+        </member>
+        <member name="P:Atalasoft.Annotate.Pdf.PdfAnnotation.PopupEventHandler">
+            <summary> An event handler used when the annotation is double-clicked and a popup window needs to be shown.
+            </summary>
+            <value> The event handler used when the popup window of the annotation needs to be shown. </value>
+            <remarks> <STRONG>DotImage</STRONG> provides a simple default popup window for PDF annotations.  Setting this
+            property allows you to override this behavior to display your own custom dialog.  To disable the dialog, set this
+            property to <STRONG>null</STRONG> (<STRONG>Nothing</STRONG> in VB). </remarks>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfAnnotation.Clone">
+            <summary> Returns a copy of this annotation. </summary>
+            <returns> A copy of this annotation. </returns>
+        </member>
+        <member name="P:Atalasoft.Annotate.Pdf.PdfAnnotation.Text">
+            <summary> Gets or sets the text for the annotation. </summary>
+            <value> The text for the annotation. </value>
+            <remarks> This text is displayed in tooltips and as the <see cref="T:Atalasoft.Annotate.Pdf.PdfLineAnnotation"/>'s caption.  The default
+            popup dialog does not update this value until the dialog has been closed. </remarks>
+        </member>
+        <member name="P:Atalasoft.Annotate.Pdf.PdfAnnotation.Fill">
+            <summary> Gets or sets the brush used to fill the annotation or line cap. </summary>
+            <value> The brush used to fill the annotation. </value>
+        </member>
+        <member name="P:Atalasoft.Annotate.Pdf.PdfAnnotation.Outline">
+            <summary> Gets or sets the pen used to draw the outline of the annotation. </summary>
+            <value> The pen used for the outline. </value>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfAnnotation.OnDoubleClick(System.EventArgs)">
+            <inheritdocs/>
+        </member>
+        <member name="T:Atalasoft.Annotate.Pdf.PdfAnnotationData">
+            <summary> This is the base PDF annotation data class from which all PDF annotation data objects derive.  This class
+            should not be created directly. </summary>
+        </member>
+        <member name="F:Atalasoft.Annotate.Pdf.PdfAnnotationData._fill">
+            <summary> Gets or sets the brush used to fill the annotation or line cap. </summary>
+            <value> The brush used to fill the annotation. </value>
+        </member>
+        <member name="F:Atalasoft.Annotate.Pdf.PdfAnnotationData._outline">
+            <summary> Gets or sets the pen used to draw the outline of the annotation. </summary>
+            <value> The pen used for the outline. </value>
+        </member>
+        <member name="F:Atalasoft.Annotate.Pdf.PdfAnnotationData._text">
+            <summary> Gets or sets the text for the annotation. </summary>
+            <value> The text for the annotation. </value>
+            <remarks> This text is displayed in tooltips and as the <see cref="T:Atalasoft.Annotate.Pdf.PdfLineAnnotation"/>'s caption.  The default
+            popup dialog does not update this value until the dialog has been closed. </remarks>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfAnnotationData.#ctor">
+            <summary> Creates a new instance of <STRONG>PdfAnnotationData</STRONG> with default settings. </summary>
+            <overloads> Creates a new instance of <STRONG>PdfAnnotationData</STRONG>. </overloads>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfAnnotationData.#ctor(Atalasoft.Annotate.AnnotationBrush,Atalasoft.Annotate.AnnotationPen,System.String,System.String,System.DateTime)">
+            <summary> Creates a new instance of <STRONG>PdfAnnotationData</STRONG> specifying all of its settings. </summary>
+            <param name="fill"> The brush used for filling the annotation or line cap. </param>
+            <param name="outline"> The outline for the annotation. </param>
+            <param name="text"> The text of the annotation. </param>
+            <param name="username"> The username of the person modifying it.  If null (Nothing in VB) the current user will be
+            retrieved from the system. </param>
+            <param name="modifiedDate"> The date when the annotation was last modified. </param>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfAnnotationData.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary> Creates a new instance of <STRONG>PdfAnnotationData</STRONG> from serialized information. </summary>
+            <param name="info"> A <STRONG>SerializationInfo</STRONG> object containing the serialized annotation. </param>
+            <param name="context"> A <STRONG>StreamingContext </STRONG>for this data. </param>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfAnnotationData.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <inheritdocs/>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfAnnotationData.FormatToolTipText">
+            <summary> This method is called to return the tooltip text string. </summary>
+            <returns> The string used in a tooltip. </returns>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfAnnotationData.Clone">
+            <inheritdocs/>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfAnnotationData.CloneBaseData(Atalasoft.Annotate.AnnotationData)">
+            <inheritdocs/>
+        </member>
+        <member name="P:Atalasoft.Annotate.Pdf.PdfAnnotationData.AnnotationBounds">
+            <inheritdocs/>
+        </member>
+        <member name="P:Atalasoft.Annotate.Pdf.PdfAnnotationData.Outline">
+            <summary> Gets or sets the pen used to draw the outline of the annotation. </summary>
+            <value> The pen used for the outline. </value>
+        </member>
+        <member name="P:Atalasoft.Annotate.Pdf.PdfAnnotationData.Fill">
+            <summary> Gets or sets the brush used to fill the annotation or line cap. </summary>
+            <value> The brush used to fill the annotation. </value>
+        </member>
+        <member name="P:Atalasoft.Annotate.Pdf.PdfAnnotationData.Text">
+            <summary> Gets or sets the text for the annotation. </summary>
+            <value> The text for the annotation. </value>
+            <remarks> This text is displayed in tooltips and as the <see cref="T:Atalasoft.Annotate.Pdf.PdfLineAnnotation"/>'s caption.  The default
+            popup dialog does not update this value until the dialog has been closed. </remarks>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfAnnotationData.OnPropertyChanging(Atalasoft.Annotate.AnnotationPropertyChangingEventArgs)">
+            <commentsfrom cref="M:Atalasoft.Annotate.AnnotationData.OnPropertyChanging(Atalasoft.Annotate.AnnotationPropertyChangingEventArgs)" filter=""/>
+        </member>
+        <member name="T:Atalasoft.Annotate.Pdf.PdfMarkupRenderingEngine">
+            <summary> This class is used to render <see cref="T:Atalasoft.Annotate.Pdf.PdfMarkupData"/> objects. </summary>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfMarkupRenderingEngine.#ctor">
+            <summary> Creates a new instance of <STRONG>PdfMarkupRenderingEngine</STRONG>. </summary>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfMarkupRenderingEngine.RenderAnnotation(Atalasoft.Annotate.AnnotationData,Atalasoft.Annotate.Renderer.RenderEnvironment)">
+            <inheritdocs/>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfMarkupRenderingEngine.RenderSelectionRectangle(Atalasoft.Annotate.Pdf.PdfMarkupData,Atalasoft.Annotate.Renderer.RenderEnvironment)">
+            <summary> Called to render a selection rectangle when the annotation is being created. </summary>
+            <param name="data"> The <see cref="T:Atalasoft.Annotate.Pdf.PdfMarkupData"/> to render. </param>
+            <param name="e"> A <see cref="T:Atalasoft.Annotate.Renderer.RenderEnvironment"/> for this process. </param>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfMarkupRenderingEngine.RenderHighlighter(Atalasoft.Annotate.Pdf.PdfMarkupData,Atalasoft.Annotate.Renderer.RenderEnvironment)">
+            <summary> Called to render a highlight annotation. </summary>
+            <param name="data"> The <see cref="T:Atalasoft.Annotate.Pdf.PdfMarkupData"/> to render. </param>
+            <param name="e"> A <see cref="T:Atalasoft.Annotate.Renderer.RenderEnvironment"/> for this process. </param>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfMarkupRenderingEngine.RenderSquiggly(Atalasoft.Annotate.Pdf.PdfMarkupData,Atalasoft.Annotate.Renderer.RenderEnvironment)">
+            <summary> Called to render a squiggly annotation. </summary>
+            <param name="data"> The <see cref="T:Atalasoft.Annotate.Pdf.PdfMarkupData"/> to render. </param>
+            <param name="e"> A <see cref="T:Atalasoft.Annotate.Renderer.RenderEnvironment"/> for this process. </param>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfMarkupRenderingEngine.RenderStrikeOut(Atalasoft.Annotate.Pdf.PdfMarkupData,Atalasoft.Annotate.Renderer.RenderEnvironment)">
+            <summary> Called to render a strikeout annotation. </summary>
+            <param name="data"> The <see cref="T:Atalasoft.Annotate.Pdf.PdfMarkupData"/> to render. </param>
+            <param name="e"> A <see cref="T:Atalasoft.Annotate.Renderer.RenderEnvironment"/> for this process. </param>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfMarkupRenderingEngine.RenderUnderline(Atalasoft.Annotate.Pdf.PdfMarkupData,Atalasoft.Annotate.Renderer.RenderEnvironment)">
+            <summary> Called to render an underline annotation. </summary>
+            <param name="data"> The <see cref="T:Atalasoft.Annotate.Pdf.PdfMarkupData"/> to render. </param>
+            <param name="e"> A <see cref="T:Atalasoft.Annotate.Renderer.RenderEnvironment"/> for this process. </param>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfMarkupRenderingEngine.RenderButtons(Atalasoft.Utils.Geometry.QuadrilateralF,Atalasoft.Annotate.Renderer.RenderEnvironment)">
+            <summary> This method is called to render the plus and minus buttons on the annotation. </summary>
+            <param name="quad"> The quadrilateral in the annotation for which buttons will be drawn. </param>
+            <param name="e"> A <see cref="T:Atalasoft.Annotate.Renderer.RenderEnvironment"/> for this process. </param>
+        </member>
+        <member name="T:Atalasoft.Annotate.Pdf.PdfLineRenderingEngine">
+            <summary> This class is used to render <see cref="T:Atalasoft.Annotate.Pdf.PdfLineData"/> objects. </summary>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfLineRenderingEngine.#ctor">
+            <summary> Creates a new instance of <STRONG>PdfLineRenderingEngine</STRONG>. </summary>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfLineRenderingEngine.RenderAnnotation(Atalasoft.Annotate.AnnotationData,Atalasoft.Annotate.Renderer.RenderEnvironment)">
+            <inheritdocs/>
+        </member>
+        <member name="T:Atalasoft.Annotate.Pdf.PdfLineAnnotation">
+            <summary> This class represents a PDF line annotation.  While similar to a standard line annotation, the PDF version
+            includes a caption which is centered within or above the line (if the text is too long to fit within). </summary>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfLineAnnotation.#ctor">
+            <summary> Creates a new instance of <STRONG>PdfLineAnnotation</STRONG> with default values. </summary>
+            <overloads> Creates a new instance of <STRONG>PdfLineAnnotation</STRONG>. </overloads>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfLineAnnotation.#ctor(Atalasoft.Annotate.Pdf.PdfLineData)">
+            <summary> Creates a new instance of <STRONG>PdfLineAnnotation</STRONG> from a <see cref="T:Atalasoft.Annotate.Pdf.PdfLineData"/> object.
+            </summary>
+            <param name="data"> The data object for the annotation. </param>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfLineAnnotation.#ctor(System.Drawing.PointF,System.Drawing.PointF,System.Boolean,Atalasoft.Annotate.AnnotationBrush,Atalasoft.Annotate.AnnotationPen)">
+            <summary> Creates a new instance of PdfLineAnnotation specifying the points, fill, outline and whether or not to
+            display its caption. </summary>
+            <param name="startPoint"> The start point of the line in annotation space. </param>
+            <param name="endPoint"> The end point of the line in annotation space. </param>
+            <param name="displayCaption"> A value indicating whether to display the line caption. </param>
+            <param name="fill"> A brush used for filling line caps. </param>
+            <param name="outline"> The pen used to draw the line. </param>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfLineAnnotation.#ctor(System.Drawing.PointF,System.Drawing.PointF,System.Boolean,Atalasoft.Annotate.AnnotationBrush,Atalasoft.Annotate.AnnotationPen,System.String,System.String,System.DateTime)">
+            <summary> Create a new instance of <STRONG>PdfLineData</STRONG> specifying its parameters. </summary>
+            <param name="startPoint"> The start point of the line in annotation space. </param>
+            <param name="endPoint"> The end point of the line in annotation space. </param>
+            <param name="displayCaption"> A value indicating whether to display the line caption. </param>
+            <param name="fill"> A brush used for filling line caps. </param>
+            <param name="outline"> The pen used to draw the line. </param>
+            <param name="text"> The text of the annotation. </param>
+            <param name="username"> The username of the person modifying the annotation. </param>
+            <param name="modifiedDate"> The last modified date for the annotation. </param>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfLineAnnotation.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary> Creates a new instance of <STRONG>PdfLineAnnotation</STRONG> from serialized information. </summary>
+            <param name="info"> A <STRONG>SerializationInfo</STRONG> object containing information for this annotation. </param>
+            <param name="context"> A <STRONG>StreamingContext</STRONG> for this data. </param>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfLineAnnotation.Clone">
+            <inheritdocs/>
+        </member>
+        <member name="P:Atalasoft.Annotate.Pdf.PdfLineAnnotation.Bounds">
+            <inheritdocs/>
+        </member>
+        <member name="P:Atalasoft.Annotate.Pdf.PdfLineAnnotation.DisplayCaption">
+            <inheritdocs/>
+        </member>
+        <member name="P:Atalasoft.Annotate.Pdf.PdfLineAnnotation.StartPoint">
+            <inheritdocs/>
+        </member>
+        <member name="P:Atalasoft.Annotate.Pdf.PdfLineAnnotation.EndPoint">
+            <inheritdocs/>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfLineAnnotation.BeginCreate">
+            <inheritdocs/>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfLineAnnotation.OnMouseDown(Atalasoft.Annotate.UI.AnnotationMouseEventArgs)">
+            <inheritdocs/>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfLineAnnotation.OnMouseMove(Atalasoft.Annotate.UI.AnnotationMouseEventArgs)">
+            <inheritdocs/>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfLineAnnotation.OnMouseUp(Atalasoft.Annotate.UI.AnnotationMouseEventArgs)">
+            <inheritdocs/>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfLineAnnotation.OnGripPositionChanged(Atalasoft.Annotate.UI.AnnotationGripChangedEventArgs)">
+            <inheritdocs/>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfLineAnnotation.OnSizeChanged(Atalasoft.Annotate.AnnotationSizeChangedEventArgs)">
+            <inheritdocs/>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfLineAnnotation.UpdatePointGrips">
+            <inheritdocs/>
+        </member>
+        <member name="T:Atalasoft.Annotate.Pdf.PdfLineData">
+            <summary> This class hold the data used by a <see cref="T:Atalasoft.Annotate.Pdf.PdfLineAnnotation"/>. </summary>
+        </member>
+        <member name="F:Atalasoft.Annotate.Pdf.PdfLineData._startPoint">
+            <summary> Gets or sets the start point of the line in annotation space. </summary>
+            <value> The start point of the line in annotation space. </value>
+        </member>
+        <member name="F:Atalasoft.Annotate.Pdf.PdfLineData._endPoint">
+            <summary> Gets or sets the end point of the line in annotation space. </summary>
+            <value> The end point of the line in annotation space. </value>
+        </member>
+        <member name="F:Atalasoft.Annotate.Pdf.PdfLineData._displayCaption">
+            <summary> Gets or sets a value indicating whether the caption is displayed. </summary>
+            <value> A value indicating whether the caption is displayed. </value>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfLineData.#ctor">
+            <summary> Creates a new instance of <STRONG>PdfLineData</STRONG> with default values. </summary>
+            <overloads> Creates a new instance of <STRONG>PdfLineData</STRONG>. </overloads>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfLineData.#cctor">
+            <summary> Creates a new instance of <STRONG>PdfLineData</STRONG> with default values. </summary>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfLineData.#ctor(System.Drawing.PointF,System.Drawing.PointF,System.Boolean,Atalasoft.Annotate.AnnotationBrush,Atalasoft.Annotate.AnnotationPen)">
+            <summary> Creates a new instance of <STRONG>PdfLineData</STRONG> specifying the points, brush, pen and whether to
+            display the line caption. </summary>
+            <param name="startPoint"> The start point of the line in annotation space. </param>
+            <param name="endPoint"> The end point of the line in annotation space. </param>
+            <param name="displayCaption"> A value indicating whether to display the line caption. </param>
+            <param name="fill"> A brush used for filling line caps. </param>
+            <param name="outline"> The pen used to draw the line. </param>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfLineData.#ctor(System.Drawing.PointF,System.Drawing.PointF,System.Boolean,Atalasoft.Annotate.AnnotationBrush,Atalasoft.Annotate.AnnotationPen,System.String,System.String,System.DateTime)">
+            <summary> Creates a new instance of <STRONG>PdfLineData</STRONG> specifying its parameters. </summary>
+            <param name="startPoint"> The start point of the line in annotation space. </param>
+            <param name="endPoint"> The end point of the line in annotation space. </param>
+            <param name="displayCaption"> A value indicating whether to display the line caption. </param>
+            <param name="fill"> A brush used for filling line caps. </param>
+            <param name="outline"> The pen used to draw the line. </param>
+            <param name="text"> The text of the annotation. </param>
+            <param name="username"> The username of the person modifying the annotation. </param>
+            <param name="modifiedDate"> The last modified date for the annotation. </param>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfLineData.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary> Creates a new instance of <STRONG>PdfLineData</STRONG> from serialized information. </summary>
+            <param name="info"> A <STRONG>SerializationInfo</STRONG> object containing information for this annotation. </param>
+            <param name="context"> A <STRONG>StreamingContext</STRONG> for this data. </param>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfLineData.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <inheritdocs/>
+        </member>
+        <member name="P:Atalasoft.Annotate.Pdf.PdfLineData.DisplayCaption">
+            <summary> Gets or sets a value indicating whether the caption is displayed. </summary>
+            <value> A value indicating whether the caption is displayed. </value>
+        </member>
+        <member name="P:Atalasoft.Annotate.Pdf.PdfLineData.StartPoint">
+            <summary>Gets or sets the starting point for the line.</summary>
+            <value>The starting point for the line.</value>
+            <summary> Gets or sets the start point of the line in annotation space. </summary>
+            <value> The start point of the line in annotation space. </value>
+        </member>
+        <member name="P:Atalasoft.Annotate.Pdf.PdfLineData.EndPoint">
+            <summary>Gets or sets the ending point for the line.</summary>
+            <value>The ending point for the line.</value>
+            <summary> Gets or sets the end point of the line in annotation space. </summary>
+            <value> The end point of the line in annotation space. </value>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfLineData.ResizeToBounds(System.Drawing.RectangleF)">
+            <summary> Resizes the annotation so its points are within the specified rectangle. </summary>
+            <param name="bounds"> The rectangle bounds to resize the annotation into. </param>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfLineData.GetLineCapBounds">
+            <inheritdocs/>
+        </member>
+        <member name="P:Atalasoft.Annotate.Pdf.PdfLineData.Bounds">
+            <commentsfrom cref="P:Atalasoft.Annotate.AnnotationData.Bounds" filter=""/>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfLineData.OnSizeChanged(Atalasoft.Annotate.AnnotationSizeChangedEventArgs)">
+            <commentsfrom cref="M:Atalasoft.Annotate.AnnotationData.OnSizeChanged(Atalasoft.Annotate.AnnotationSizeChangedEventArgs)" filter=""/>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfLineData.Clone">
+            <summary>Creates a copy of this LineData.</summary>
+            <returns>A copy of this object.</returns>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfLineData.Equals(System.Object)">
+            <summary>
+            Determines if another <strong>LineData</strong> object has the same property
+            settings.
+            </summary>
+            <returns>True if the object provided has the same property values.</returns>
+            <remarks>
+            Some unique properties are not compared, such as <see cref="P:Atalasoft.Annotate.AnnotationData.Name" /> and <see cref="P:Atalasoft.Annotate.AnnotationData.ModifiedTime" />.
+            </remarks>
+            <param name="obj">An <strong>LineData</strong> object to compare.</param>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfLineData.GetHashCode">
+            <commentsfrom cref="M:Atalasoft.Annotate.AnnotationData.GetHashCode" filter=""/>
+        </member>
+        <member name="T:Atalasoft.Annotate.Pdf.PdfLinkData">
+            <summary>
+            Implements PDF Link annotation data.
+            </summary>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfLinkData.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Atalasoft.Annotate.Pdf.PdfLinkData"/> class.
+            </summary>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfLinkData.#ctor(Atalasoft.Utils.Geometry.QuadrilateralF[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Atalasoft.Annotate.Pdf.PdfLinkData"/> class.
+            </summary>
+            <param name="quads">Rectangle where the annotation is created.</param>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfLinkData.#ctor(Atalasoft.Utils.Geometry.QuadrilateralF[],Atalasoft.Annotate.AnnotationBrush,Atalasoft.Annotate.AnnotationPen,System.String,System.String,System.DateTime)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Atalasoft.Annotate.Pdf.PdfLinkData"/> class.
+            </summary>
+            <param name="quads">Rectangle where the annotation is created.</param>
+            <param name="fill"> The brush used for filling the annotation or line cap. </param>
+            <param name="outline"> The outline for the annotation. </param>
+            <param name="text"> The text of the annotation. </param>
+            <param name="username"> The username of the person modifying it.  If null (Nothing in VB) the current user will be
+            retrieved from the system. </param>
+            <param name="modifiedDate"> The date when the annotation was last modified. </param>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfLinkData.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary> 
+            Initializes a new instance of the <see cref="T:Atalasoft.Annotate.Pdf.PdfLinkData"/> class.
+            </summary>
+            <param name="info"> A <see cref="T:System.Runtime.Serialization.SerializationInfo"/> object containing the serialized annotation. </param>
+            <param name="context"> A <see cref="T:System.Runtime.Serialization.StreamingContext"/> for this data. </param>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfLinkData.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <inheritdocs/>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfLinkData.Clone">
+            <inheritdocs/>
+        </member>
+        <member name="P:Atalasoft.Annotate.Pdf.PdfLinkData.Quadrilaterals">
+            <summary>
+            Gets the rectangle where the annotation is created.
+            </summary>
+        </member>
+        <member name="P:Atalasoft.Annotate.Pdf.PdfLinkData.ClickAction">
+            <summary>
+            Gets the list of click delegates.
+            </summary>
+        </member>
+        <member name="T:Atalasoft.Annotate.Pdf.PdfMarkupAnnotation">
+            <summary> This class represents a PDF markup annotation, such as underline, squiggly, strikeout and highlight.
+            </summary>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfMarkupAnnotation.#ctor">
+            <summary> Creates a new instance of <STRONG>PdfMarkupAnnotation</STRONG> with default values. </summary>
+            <overloads> Creates a new instance of <STRONG>PdfMarkupAnnotation</STRONG>. </overloads>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfMarkupAnnotation.#ctor(Atalasoft.Annotate.Pdf.PdfMarkupData)">
+            <summary> Creates a new instance of <STRONG>PdfMarkupAnnotation</STRONG> from a <see cref="T:Atalasoft.Annotate.Pdf.PdfMarkupData"/> object.
+            </summary>
+            <param name="data"> The data class for this annotation. </param>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfMarkupAnnotation.#ctor(Atalasoft.Utils.Geometry.QuadrilateralF[],Atalasoft.Annotate.Pdf.PdfMarkupType)">
+            <summary> Creates a new instance of <STRONG>PdfMarkupAnnotation</STRONG> specifying an array of quadrilaterals and
+            the markup type. </summary>
+            <param name="quads"> An array of quadrilaterals for the annotation. </param>
+            <param name="markup"> The markup type of this annotation. </param>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfMarkupAnnotation.#ctor(Atalasoft.Utils.Geometry.QuadrilateralF[],Atalasoft.Annotate.Pdf.PdfMarkupType,Atalasoft.Annotate.AnnotationBrush,Atalasoft.Annotate.AnnotationPen,System.String,System.String,System.DateTime)">
+            <summary> Creates a new instance of <STRONG>PdfMarkupAnnotation</STRONG> specifying its parameters. </summary>
+            <param name="quads"> An array of qualrilaterals for the annotation. </param>
+            <param name="markup"> The markup type of the annotation. </param>
+            <param name="fill"> The fill for the annotation. </param>
+            <param name="outline"> The outline of the annotation. </param>
+            <param name="text"> The text for the annotation. </param>
+            <param name="username"> The username of the person modifying the annotation. </param>
+            <param name="modifiedDate"> The last modified date of the annotation. </param>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfMarkupAnnotation.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary> Creates a new instance of <STRONG>PdfMarkupAnnotation</STRONG> from serialized information. </summary>
+            <param name="info"> A <STRONG>SerializationInfo</STRONG> object containing the annotation data. </param>
+            <param name="context"> A <STRONG>StreamingContext</STRONG> for the data. </param>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfMarkupAnnotation.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <inheritdocs/>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfMarkupAnnotation.Clone">
+            <inheritdocs/>
+        </member>
+        <member name="P:Atalasoft.Annotate.Pdf.PdfMarkupAnnotation.MarkupType">
+            <summary>
+            Gets or sets the type of markup annotation.
+            </summary>
+        </member>
+        <member name="P:Atalasoft.Annotate.Pdf.PdfMarkupAnnotation.Quadrilaterals">
+            <summary>
+            Gets the list of quadrilaterals.
+            </summary>
+        </member>
+        <member name="P:Atalasoft.Annotate.Pdf.PdfMarkupAnnotation.SquigglyHeight">
+            <summary>
+            Gets or sets the height of the squiggly line.
+            </summary>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfMarkupAnnotation.BeginCreate">
+            <inheritdocs/>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfMarkupAnnotation.OnMouseDown(Atalasoft.Annotate.UI.AnnotationMouseEventArgs)">
+            <inheritdocs/>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfMarkupAnnotation.OnMouseMove(Atalasoft.Annotate.UI.AnnotationMouseEventArgs)">
+            <inheritdocs/>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfMarkupAnnotation.OnMouseUp(Atalasoft.Annotate.UI.AnnotationMouseEventArgs)">
+            <inheritdocs/>
+        </member>
+        <member name="P:Atalasoft.Annotate.Pdf.PdfMarkupAnnotation.Bounds">
+            <inheritdocs/>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfMarkupAnnotation.GetConfinedGripPosition(System.Drawing.RectangleF,Atalasoft.Annotate.UI.AnnotationGrip,System.Drawing.PointF,System.Boolean@)">
+            <inheritdocs/>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfMarkupAnnotation.OnGripPositionChanged(Atalasoft.Annotate.UI.AnnotationGripChangedEventArgs)">
+            <inheritdocs/>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfMarkupAnnotation.UpdatePointGrips">
+            <inheritdocs/>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfMarkupAnnotation.OnResizing(System.EventArgs)">
+            <inheritdocs/>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfMarkupAnnotation.OnMoving(Atalasoft.Annotate.AnnotationLocationChangedEventArgs)">
+            <inheritdocs/>
+        </member>
+        <member name="T:Atalasoft.Annotate.Pdf.PdfMarkupData">
+            <summary> This class contains the data used by <see cref="T:Atalasoft.Annotate.Pdf.PdfMarkupAnnotation"/> objects. </summary>
+        </member>
+        <member name="F:Atalasoft.Annotate.Pdf.PdfMarkupData._markupType">
+            <summary> Gets or sets the markup type for this annotation. </summary>
+            <value> The markup type for this annotation. </value>
+        </member>
+        <member name="F:Atalasoft.Annotate.Pdf.PdfMarkupData._squigglyHeight">
+            <summary> Gets or sets the height of the squiggly line. </summary>
+            <value> The height of the squiggly line. </value>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfMarkupData.#cctor">
+            <overloads> Creates a new instance of <STRONG>PdfMarkupData</STRONG>. </overloads>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfMarkupData.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Atalasoft.Annotate.Pdf.PdfMarkupData"/> class.
+            </summary>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfMarkupData.#ctor(Atalasoft.Utils.Geometry.QuadrilateralF[],Atalasoft.Annotate.Pdf.PdfMarkupType)">
+            <summary> Creates a new instance of <STRONG>PdfMarkupData</STRONG> specifying an array of quadrilaterals and the
+            markup type. </summary>
+            <param name="quads"> An array of quadrilaterals for the annotation. </param>
+            <param name="markup"> The markup type of the annotation. </param>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfMarkupData.#ctor(Atalasoft.Utils.Geometry.QuadrilateralF[],Atalasoft.Annotate.Pdf.PdfMarkupType,Atalasoft.Annotate.AnnotationBrush,Atalasoft.Annotate.AnnotationPen,System.String,System.String,System.DateTime)">
+            <summary> Creates a new instance of <STRONG>PdfMarkupData</STRONG> specifying the annotation parameters. </summary>
+            <param name="quads"> An array of quadrilaterals for the annotation. </param>
+            <param name="markup"> The markup type of the annotation. </param>
+            <param name="fill"> The fill for the annotation. </param>
+            <param name="outline"> The outline of the annotation. </param>
+            <param name="text"> The text for the annotation. </param>
+            <param name="username"> The username of the person modifying the annotation. </param>
+            <param name="modifiedDate"> The last modified date of the annotation. </param>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfMarkupData.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary> Creates a new instance of <STRONG>PdfMarkupData</STRONG> from serialized data. </summary>
+            <param name="info"> A <STRONG>SerializationInfo</STRONG> object containing the annotation data. </param>
+            <param name="context"> A <STRONG>StreamingContext</STRONG> for the data. </param>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfMarkupData.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <inheritdocs/>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfMarkupData.Clone">
+            <inheritdocs/>
+        </member>
+        <member name="P:Atalasoft.Annotate.Pdf.PdfMarkupData.SquigglyHeight">
+            <summary> Gets or sets the height of the squiggly line. </summary>
+            <value> The height of the squiggly line. </value>
+        </member>
+        <member name="P:Atalasoft.Annotate.Pdf.PdfMarkupData.MarkupType">
+            <summary> Gets or sets the markup type for this annotation. </summary>
+            <value> The markup type for this annotation. </value>
+        </member>
+        <member name="P:Atalasoft.Annotate.Pdf.PdfMarkupData.Quadrilaterals">
+            <summary> Gets the <STRONG>QuadrilateralFCollection</STRONG> holding quadrilaterals for this annotation. </summary>
+            <value> A <STRONG>QuadrilateralFCollection</STRONG> containing quadrilaterals for the annotation. </value>
+        </member>
+        <member name="T:Atalasoft.Annotate.Pdf.PdfPopupDialog">
+            <summary>
+            Summary description for PdfPopupDialog.
+            </summary>
+        </member>
+        <member name="F:Atalasoft.Annotate.Pdf.PdfPopupDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfPopupDialog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:Atalasoft.Annotate.Pdf.PdfPopupDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Atalasoft.Annotate.Pdf.NamespaceDoc">
+            <summary> This namespace contains PDF specific annotation classes. </summary>
+        </member>
+        <member name="T:Atalasoft.dotImage.PdfDoc.Bridge.AtalaImageCompressor">
+            <summary>
+            AtalaImageCompressor is a class that can be added to a PdfGeneratedDocuments Image Resources object to
+            provide compression services for AtalaImage objects.  This object will make
+            </summary>
+        </member>
+        <member name="M:Atalasoft.dotImage.PdfDoc.Bridge.AtalaImageCompressor.ImageSize(Atalasoft.Imaging.AtalaImage)">
+            <summary>
+            Returns the size of the image in PDF space, respecting resolution
+            </summary>
+            <param name="image">The image to measure.</param>
+            <returns>A PdfBounds in the form (0, 0, width, height) where width and height are in PDF space</returns>
+        </member>
+        <member name="M:Atalasoft.dotImage.PdfDoc.Bridge.AtalaImageCompressor.ImageSizeAt(Atalasoft.Imaging.AtalaImage,System.Double,System.Double)">
+            <summary>
+            Returns the size of the image in PDF space, respecting resolution
+            </summary>
+            <param name="image">The image to measure.</param>
+            <param name="x">The desired output left edge of the PdfBounds.</param>
+            <param name="y">The desired output bottom edge of the PdfBounds.</param>
+            <returns>A PdfBounds in the form (x, y, width, height) where width and height are in PDF space</returns>
+        </member>
+        <member name="M:Atalasoft.dotImage.PdfDoc.Bridge.AtalaImageCompressor.CreateDocument">
+            <summary>
+            This is a utility method to create a new PdfGeneratedDocument with an AtalaImageCompressor already
+            installed.  This also installs an AtalaJpegStreamCompressor which will allow pass-through
+            of Stream objects which represent JPEG images without decoding/recompressing them.
+            </summary>
+            <returns>A new PdfGeneratedDocument</returns>
+        </member>
+        <member name="M:Atalasoft.dotImage.PdfDoc.Bridge.AtalaImageCompressor.CreateDocument(Atalasoft.Imaging.Codec.ImageEncoder,Atalasoft.Imaging.Codec.ImageEncoder)">
+            <summary>
+            This is a utility method to create a new PdfGeneratedDocument with an AtalaImageCompressor already
+            installed adding the ability to compress using JPEG2000 and/or JBIG2 compression.
+            </summary>
+            <param name="jpeg2000Encoder">The jpeg2000 encoder to use for color images.</param>
+            <param name="jbig2Encoder">The jbig2 encoder to use for 1-bit images.</param>
+            <returns>A new PdfGeneratedDocument</returns>
+        </member>
+        <member name="M:Atalasoft.dotImage.PdfDoc.Bridge.AtalaImageCompressor.AddImageResource(Atalasoft.PdfDoc.Generating.ResourceHandling.GlobalResources,Atalasoft.Imaging.AtalaImage)">
+            <summary>
+            Utility method to add the image to the resources respecting the color profile of the image (if any). This method will throw a PDFException if AtalaImageCompressor was not added as a compressor in the passed GlobalResources parameter.
+            </summary>
+            <param name="gr">The global resources to add to.</param>
+            <param name="image">The image to add to the resources.</param>
+            <returns>An array of strings with the resource names arr[0] is the image resource name and arr[1] is the colorspace resource name (if any)</returns>
+            <remarks>After calling this method the AtalaImage will no longer be needed and can be disposed.</remarks>
+        </member>
+        <member name="M:Atalasoft.dotImage.PdfDoc.Bridge.AtalaImageCompressor.CreateImageShape(Atalasoft.PdfDoc.Generating.ResourceHandling.GlobalResources,Atalasoft.Imaging.AtalaImage)">
+            <summary>
+            Utility method to create an image shape using the provided image. This method will throw a PDFException if AtalaImageCompressor was not added as a compressor in the passed GlobalResources parameter.
+            </summary>
+            <param name="gr">The global resources to which the image will be added.</param>
+            <param name="image">The image from which the shape will be made.</param>
+            <returns>A new PdfImageShape representing the image supplied</returns>
+            <remarks>After calling this method the AtalaImage will no longer be needed and can be disposed.
+            </remarks>
+        </member>
+        <member name="M:Atalasoft.dotImage.PdfDoc.Bridge.AtalaImageCompressor.CreateImageShapeAt(Atalasoft.PdfDoc.Generating.ResourceHandling.GlobalResources,Atalasoft.Imaging.AtalaImage,System.Double,System.Double)">
+            <summary>
+            Utility method to create an image shape using the provided image. This method will throw a PDFException if AtalaImageCompressor was not added as a compressor in the passed GlobalResources parameter.
+            </summary>
+            <param name="gr">The global resources to which the image will be added.</param>
+            <param name="image">The image from which the shape will be made.</param>
+            <param name="x">The x coordinate of the resulting PdfImageShape in PDF space.</param>
+            <param name="y">The y coordinate of the resulting PdfImageShape in PDF space.</param>
+            <returns>A new PdfImageShape representing the image supplied</returns>
+            <remarks>After calling this method the AtalaImage will no longer be needed and can be disposed.</remarks>
+        </member>
+        <member name="M:Atalasoft.dotImage.PdfDoc.Bridge.AtalaImageCompressor.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Atalasoft.dotImage.PdfDoc.Bridge.AtalaImageCompressor"/> class.
+            </summary>
+        </member>
+        <member name="M:Atalasoft.dotImage.PdfDoc.Bridge.AtalaImageCompressor.#ctor(Atalasoft.Imaging.Codec.ImageEncoder,Atalasoft.Imaging.Codec.ImageEncoder)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Atalasoft.dotImage.PdfDoc.Bridge.AtalaImageCompressor"/> class with default advanced compressors.
+            </summary>
+            <param name="jpeg2000Encoder">The jpeg2000 encoder to use for color images.</param>
+            <param name="jbig2Encoder">The jbig2 encoder to use for 1-bit images.</param>
+        </member>
+        <member name="M:Atalasoft.dotImage.PdfDoc.Bridge.AtalaImageCompressor.CanCompress(System.Object,Atalasoft.PdfDoc.Generating.ResourceHandling.Images.ImageHandlingSkill)">
+            <summary>
+            Determines whether this instance can compress the specified object.
+            </summary>
+            <param name="o">The object to compress.</param>
+            <param name="skill">The skill of compression requested.</param>
+            <returns>A collection of codecs that can compress the object, null if there are none</returns>
+        </member>
+        <member name="M:Atalasoft.dotImage.PdfDoc.Bridge.AtalaImageCompressor.GetImageInformation(System.Object,System.String)">
+            <summary>
+            Gets the image information for the supplied image.
+            </summary>
+            <param name="o">The object for compression.</param>
+            <param name="colorSpaceResourceName">Name of the color space resource.</param>
+            <returns>A new <see cref="T:Atalasoft.PdfDoc.Generating.ResourceHandling.Images.PdfImageInformation"/> object representing the object to compress</returns>
+        </member>
+        <member name="M:Atalasoft.dotImage.PdfDoc.Bridge.AtalaImageCompressor.Compress(System.Object,Atalasoft.PdfDoc.Generating.ResourceHandling.Images.IStoredStreamProvider,Atalasoft.PdfDoc.Generating.ResourceHandling.Images.PdfImageCompression)">
+            <summary>
+            Compresses the specified object to the stored stream provided.
+            </summary>
+            <param name="o">The object to compress.</param>
+            <param name="streamProvider">The stream provider.</param>
+            <param name="compression">The compression settings to use.</param>
+            <returns>A compressed image stream provider with the compressed image data</returns>
+        </member>
+        <member name="T:Atalasoft.dotImage.PdfDoc.Bridge.AtalaImageCompressor.AtalaImageDataProvider">
+            <summary>
+            AtalaImageDataProvider is a class for providing sequential access to data in 1-bit AtalaImages.
+            </summary>
+        </member>
+        <member name="M:Atalasoft.dotImage.PdfDoc.Bridge.AtalaImageCompressor.AtalaImageDataProvider.#ctor(Atalasoft.Imaging.AtalaImage,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Atalasoft.dotImage.PdfDoc.Bridge.AtalaImageCompressor.AtalaImageDataProvider"/> class.
+            </summary>
+            <param name="image">The image to use as a data source.</param>
+            <param name="invert">if set to <c>true</c> [invert] the data.</param>
+        </member>
+        <member name="M:Atalasoft.dotImage.PdfDoc.Bridge.AtalaImageCompressor.AtalaImageDataProvider.#ctor(Atalasoft.Imaging.Memory.PixelAccessor,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Atalasoft.dotImage.PdfDoc.Bridge.AtalaImageCompressor.AtalaImageDataProvider"/> class.
+            </summary>
+            <param name="pa">The PixelAccessor to use for image data.</param>
+            <param name="width">The width of the image data in pixels.</param>
+        </member>
+        <member name="P:Atalasoft.dotImage.PdfDoc.Bridge.AtalaImageCompressor.AtalaImageDataProvider.Width">
+            <summary>
+            Gets or sets the width of the image data in pixels
+            </summary>
+            <value>
+            The width.
+            </value>
+        </member>
+        <member name="P:Atalasoft.dotImage.PdfDoc.Bridge.AtalaImageCompressor.AtalaImageDataProvider.Height">
+            <summary>
+            Gets or sets the height of the image data in pixels
+            </summary>
+            <value>
+            The height.
+            </value>
+        </member>
+        <member name="M:Atalasoft.dotImage.PdfDoc.Bridge.AtalaImageCompressor.AtalaImageDataProvider.Begin">
+            <summary>
+            Initializes for access to data
+            </summary>
+        </member>
+        <member name="M:Atalasoft.dotImage.PdfDoc.Bridge.AtalaImageCompressor.AtalaImageDataProvider.End">
+            <summary>
+            Cleans up after access.
+            </summary>
+        </member>
+        <member name="M:Atalasoft.dotImage.PdfDoc.Bridge.AtalaImageCompressor.AtalaImageDataProvider.GetRow(System.Int32,System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Gets a row of image data
+            </summary>
+            <param name="y">The y coordinate of the scanline to get.</param>
+            <param name="destBuffer">The destination buffer.</param>
+            <param name="destOffset">The offset in the destination buffer.</param>
+            <param name="totalBytes">The total bytes to copy.</param>
+        </member>
+        <member name="T:Atalasoft.dotImage.PdfDoc.Bridge.AtalaImageCoordinateConverter">
+            <summary>
+            AtalaImageCoordinateConverter is used to convert coordinates in AtalaImage space to
+            coordinates in PDF space and vice versa.
+            </summary>
+        </member>
+        <member name="M:Atalasoft.dotImage.PdfDoc.Bridge.AtalaImageCoordinateConverter.#ctor(Atalasoft.Imaging.AtalaImage)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Atalasoft.dotImage.PdfDoc.Bridge.AtalaImageCoordinateConverter"/> class.  This image must have a
+            valid Resolution property.  Image resolution is used for the transformation and compound resolution is supported.
+            </summary>
+            <param name="image">The image used for building transformations.</param>
+        </member>
+        <member name="M:Atalasoft.dotImage.PdfDoc.Bridge.AtalaImageCoordinateConverter.#ctor(Atalasoft.Imaging.Dpi,System.Drawing.SizeF)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Atalasoft.dotImage.PdfDoc.Bridge.AtalaImageCoordinateConverter"/> class.  This must have a
+            valid resolution and size.  Resolution is used for the transformation and compound resolution is supported.
+            </summary>
+            <param name="resolution">The Dpi used for building transformations.</param>
+            <param name="size">The size of the image used for building transformations.</param>
+        </member>
+        <member name="M:Atalasoft.dotImage.PdfDoc.Bridge.AtalaImageCoordinateConverter.ToPdfImageSize">
+            <summary>
+            Converts the image size to the equivalent size in PDF space.
+            </summary>
+            <returns>a PdfBounds object set to (0, 0, width, height)</returns>
+        </member>
+        <member name="M:Atalasoft.dotImage.PdfDoc.Bridge.AtalaImageCoordinateConverter.ToPdfImageSize(Atalasoft.Imaging.AtalaImage)">
+            <summary>
+            Converts the image size to the equivalent size in PDF space.
+            This is equivalent to <code>new AtalaImageCoordinateConverter(image).ToPdfImageSize()</code>
+            </summary>
+            <param name="image">The image to use for coverting the size</param>
+            <returns></returns>
+        </member>
+        <member name="M:Atalasoft.dotImage.PdfDoc.Bridge.AtalaImageCoordinateConverter.ToPdf(System.Drawing.Point)">
+            <summary>
+            Converts the input Point in image coordinates to PDF coordinates
+            </summary>
+            <param name="p">The point to convert</param>
+            <returns>a PdfPoint in PDF coordinates</returns>
+        </member>
+        <member name="M:Atalasoft.dotImage.PdfDoc.Bridge.AtalaImageCoordinateConverter.ToPdf(System.Drawing.Rectangle)">
+            <summary>
+            Converts the input Rectangle in image coordinates to PDF coordinates
+            </summary>
+            <param name="r">The rectangle to convert.</param>
+            <returns>a PdfBounds in PDF coordinates</returns>
+        </member>
+        <member name="M:Atalasoft.dotImage.PdfDoc.Bridge.AtalaImageCoordinateConverter.ToPdf(System.Drawing.RectangleF)">
+            <summary>
+            Converts the input Rectangle in image coordinates to PDF coordinates
+            </summary>
+            <param name="r">The rectangle to convert.</param>
+            <returns>a PdfBounds in PDF coordinates</returns>
+        </member>
+        <member name="M:Atalasoft.dotImage.PdfDoc.Bridge.AtalaImageCoordinateConverter.ToImage(Atalasoft.PdfDoc.Geometry.PdfPoint)">
+            <summary>
+            Converts the input PdfPoint in PDF coordinates to image coordinates.
+            </summary>
+            <param name="pt">The PdfPoint to convert</param>
+            <returns>a PointF in image coordinates</returns>
+        </member>
+        <member name="M:Atalasoft.dotImage.PdfDoc.Bridge.AtalaImageCoordinateConverter.ToImageI(Atalasoft.PdfDoc.Geometry.PdfPoint)">
+            <summary>
+            Converts the input PdfPoint in PDF coordinates to integer-based image coordinates, rounding the values
+            </summary>
+            <param name="pt">The PdfPoint to convert</param>
+            <returns>a Point in image coordinates</returns>
+        </member>
+        <member name="M:Atalasoft.dotImage.PdfDoc.Bridge.AtalaImageCoordinateConverter.ToImageITruncated(Atalasoft.PdfDoc.Geometry.PdfPoint)">
+            <summary>
+            Converts the input PdfPoint in PDF coordinates to integer-based image coordinates, truncating the values
+            </summary>
+            <param name="pt">The PdfPoint to convert</param>
+            <returns>a Point in image coordinates</returns>
+        </member>
+        <member name="M:Atalasoft.dotImage.PdfDoc.Bridge.AtalaImageCoordinateConverter.ToImage(Atalasoft.PdfDoc.Geometry.PdfBounds)">
+            <summary>
+            Converts the input PdfBounds in PDF coordinates to image coordinates
+            </summary>
+            <param name="r">The rectangle to convert</param>
+            <returns>a RectangleF in image coordinates</returns>
+        </member>
+        <member name="M:Atalasoft.dotImage.PdfDoc.Bridge.AtalaImageCoordinateConverter.ToImageI(Atalasoft.PdfDoc.Geometry.PdfBounds)">
+            <summary>
+            Converts the input PdfBounds in PDF coordinates to integer-based image coordinates, rounding the values
+            </summary>
+            <param name="r">The rectangle to convert</param>
+            <returns>a Rectangle in image coordinates</returns>
+        </member>
+        <member name="M:Atalasoft.dotImage.PdfDoc.Bridge.AtalaImageCoordinateConverter.ToImageITruncated(Atalasoft.PdfDoc.Geometry.PdfBounds)">
+            <summary>
+            Converts the input PdfBounds in PDF coordinates to integer-based image coordinates, truncating the values
+            </summary>
+            <param name="r">The rectangle to convert</param>
+            <returns>a Rectangle in image coordinates</returns>
+        </member>
+        <member name="T:Atalasoft.dotImage.PdfDoc.Bridge.AtalaJpegStreamCompressor">
+            <summary>
+            AtalaJpegStreamCompressor is a utility class that provides pass-through use of
+            JPEG data in PDF images.  This will prevent artificating that may result from
+            repeated decompression and compression of JPEG images.
+            </summary>
+        </member>
+        <member name="M:Atalasoft.dotImage.PdfDoc.Bridge.AtalaJpegStreamCompressor.CanCompress(System.Object,Atalasoft.PdfDoc.Generating.ResourceHandling.Images.ImageHandlingSkill)">
+            <summary>
+            Determines whether this instance can compress the specified object.
+            </summary>
+            <param name="o">The object to compress - this should be a Stream object.</param>
+            <param name="skill">The skill which is requested for compressing the image.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Atalasoft.dotImage.PdfDoc.Bridge.AtalaJpegStreamCompressor.GetImageInformation(System.Object,System.String)">
+            <summary>
+            Gets the image information for the supplied image.
+            </summary>
+            <param name="o">The object for compression.</param>
+            <param name="colorSpaceResourceName">Name of the color space resource.</param>
+            <returns>A new <see cref="T:Atalasoft.PdfDoc.Generating.ResourceHandling.Images.PdfImageInformation"/> object representing the object to compress</returns>
+        </member>
+        <member name="M:Atalasoft.dotImage.PdfDoc.Bridge.AtalaJpegStreamCompressor.Compress(System.Object,Atalasoft.PdfDoc.Generating.ResourceHandling.Images.IStoredStreamProvider,Atalasoft.PdfDoc.Generating.ResourceHandling.Images.PdfImageCompression)">
+            <summary>
+            Compresses the specified object.
+            </summary>
+            <param name="o">The o.</param>
+            <param name="streamProvider">The stream provider for image data.</param>
+            <param name="compression">The compression information to use.</param>
+            <returns>A PdfCompressedStreamProvider for this image</returns>
+            <remarks>This is a pass-through for JPEG image data.  The JPEG image data is passed through as is with the exception
+            that JPEG markers are stripped out since they are not valid within PDF files</remarks>
+        </member>
+        <member name="T:Atalasoft.dotImage.PdfDoc.Bridge.PdfAAtalaImageCompressor">
+            <summary>
+            The class that can be added to a PdfGeneratedDocuments Image Resources object to
+            provide compression services for AtalaImage objects according to PDF/A standard.
+            </summary>
+        </member>
+        <member name="M:Atalasoft.dotImage.PdfDoc.Bridge.PdfAAtalaImageCompressor.#ctor(Atalasoft.Imaging.Codec.ImageEncoder)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Atalasoft.dotImage.PdfDoc.Bridge.PdfAAtalaImageCompressor"/>
+            class with default advanced compressors.
+            </summary>
+            <param name="jbig2Encoder">The jbig2 encoder to use for 1-bit images.</param>
+        </member>
+        <member name="M:Atalasoft.dotImage.PdfDoc.Bridge.PdfAAtalaImageCompressor.Compress(System.Object,Atalasoft.PdfDoc.Generating.ResourceHandling.Images.IStoredStreamProvider,Atalasoft.PdfDoc.Generating.ResourceHandling.Images.PdfImageCompression)">
+            <summary>
+            Converts image to RGB color space and compresses 
+            the specified object to the stored stream provided.
+            </summary>
+            <param name="o">The object to compress.</param>
+            <param name="streamProvider">The stream provider.</param>
+            <param name="compression">The compression settings to use.</param>
+            <returns>A compressed image stream provider with
+            the compressed image data</returns>
+        </member>
+    </members>
+</doc>

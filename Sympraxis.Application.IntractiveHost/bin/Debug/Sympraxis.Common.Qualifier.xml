@@ -1,0 +1,93 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+Sympraxis.Common.Qualifier
+</name>
+</assembly>
+<members>
+<member name="M:Sympraxis.Common.Qualifier.UniqueIdSegmentKeyNumberHelper.GenerateSysKeys(System.Int32,Sympraxis.Common.Qualifier.ObjectAdapter,Sympraxis.Common.Qualifier.UniqueIdSettings,System.String,System.Int32@,System.String@)">
+	<summary>
+	</summary>
+	<param name="iTotDpCount"></param>
+	<param name="DocFldAD"></param>
+	<param name="KeySettings"></param>
+	<param name="ObjectType"></param>
+	<remarks></remarks>
+</member><member name="M:Sympraxis.Common.Qualifier.UniqueIdSegmentKeyNumberHelper.GenerateSysKeys(System.Int32,Sympraxis.Common.Qualifier.ObjectAdapter,Sympraxis.Common.Qualifier.UniqueIdSettings,System.String,Sympraxis.Common.Qualifier.UniqueIdSegmentRangeKeyNumber,System.Int32@,System.String@)">
+	<summary>
+ Created By: SA1060
+ Date      : 23 Aug 2010
+ Overloaded Function
+ </summary>
+	<param name="totalDPCount"></param>
+	<param name="objFieldAD"></param>
+	<param name="KeySettings"></param>
+	<param name="ObjectType"></param>
+	<remarks></remarks>
+</member><member name="P:Sympraxis.Common.Qualifier.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:Sympraxis.Common.Qualifier.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:Sympraxis.Common.Qualifier.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member><member name="M:Sympraxis.Common.Qualifier.UniqueIdSegmentDate.#ctor(System.DateTime,Sympraxis.Common.Qualifier.UniqueIdDateFormat,System.Char,System.Char,System.Char,System.Char,System.String,System.String,System.String)">
+	<summary>
+ Constructs date segment for the given settings
+ </summary>
+	<param name="DateFormat">Format of date supported</param>
+	<param name="PadYear">Left padding character for single digit year. Leave empty if padding not required.</param>
+	<param name="PadDay">Left padding character for single digit day of the year. Leave empty if padding not required.</param>
+	<param name="PadDate">Left padding character for single digit date. Leave empty if padding not required.</param>
+	<param name="PadMonth">Left padding character for single digit month. Leave empty if padding not required.</param>
+	<param name="DateMap">Comma separated values to be replaced for the date. Give value for 31 dates.</param>
+	<param name="MonthMap">Comma separated values to be replaced for the month. Give value for 12 months in the order of month in year</param>
+	<param name="YearMap">Comma separated paired values to be replaced for each year. Eg. 2008|A,2009|B,2010|C</param>
+	<remarks></remarks>
+</member><member name="M:Sympraxis.Common.Qualifier.clsSystemKeyClass.GetSysRecs(Sympraxis.Common.Qualifier.clsSystemKeyClass.SysConsignBatch@,System.Collections.Hashtable@)">
+	<summary>
+ Created By : SA1060
+ Date       : 23 Aug 2010
+ Description: This function will execute the procedure dbo.
+ </summary>
+	<param name="pSysConsignBatch"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Sympraxis.Common.Qualifier.clsSystemKeyClass.GetBatchDate(Sympraxis.Common.Qualifier.clsSystemKeyClass.SysBatch,System.Collections.Hashtable@)">
+	<summary>
+ Created by US1547
+ To get the Batch Zip Creation dates which was in dtSiteReceiveDate column in ScanBatch Table of QOSDB
+ </summary>
+	<param name="pSysBatch"></param>
+	<param name="dtBatches"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:Sympraxis.Common.Qualifier.UniqueIdSegment.Type">
+	<summary>
+  ReadOnly Property for Setting SegmentType
+ </summary>
+	<value>ReadOnly Property Setting SegmentType</value>
+	<returns>UIdSegmentType</returns>
+	<remarks></remarks>
+</member><member name="M:Sympraxis.Common.Qualifier.ObjectAdapter.MatchParameter(System.String,System.String,System.String,System.String,System.String,System.String@,System.Boolean@)">
+	<summary>
+	</summary>
+	<param name="Parameter"></param>
+	<param name="Spiltval"></param>
+	<param name="TargetSecXpath"></param>
+	<param name="ValueSet"></param>
+	<param name="Delimiter"></param>
+	<param name="sErrMsg"></param>
+	<param name="AHDataElement"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member>
+</members>
+</doc>
